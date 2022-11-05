@@ -1,0 +1,8 @@
+#########
+#Exclude all
+#########
+
+.DS_Store
+
+Tmp/
+!Tmp/.gitkeep

@@ -1,0 +1,5 @@
+# Hashes of file build rules.
+1e3c756fcdbbce97ac83f0a2b8aca801 tools/convert_tool/CMakeFiles/TF_SERIALIZER_TARGET
+1c14edd5f5ed2a29e8a6ea0428e82399 tools/convert_tool/onnx.pb.h
+b1b3d25c2162bde90de25eddf5071aec tools/convert_tool/te_caffe.pb.h
+2cd1ddb560819fa9cc590f3f6dd1ca19 tools/convert_tool/tensorflow/graph.pb.cc

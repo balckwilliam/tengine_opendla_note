@@ -1,0 +1,2 @@
+/root/workfiles/cmake/cmake-3.19.5/Source/Checks/Curses-build/CMakeFiles/rebuild_cache.dir
+/root/workfiles/cmake/cmake-3.19.5/Source/Checks/Curses-build/CMakeFiles/edit_cache.dir

@@ -1,0 +1,420 @@
+#use_cache "/root/workfiles/opencv-4.5.4/.cache"
+#do_unpack "v0.1.1f.zip" "b624b995ec9c439cbc2e9e6ee940d3a2" "https://github.com/opencv/ade/archive/v0.1.1f.zip" "/root/workfiles/opencv-4.5.4/build/build/3rdparty/ade"
+#cmake_download "/root/workfiles/opencv-4.5.4/.cache/ade/b624b995ec9c439cbc2e9e6ee940d3a2-v0.1.1f.zip" "https://github.com/opencv/ade/archive/v0.1.1f.zip"
+#try 1
+#   Trying 20.205.243.166:443...
+# Connected to github.com (20.205.243.166) port 443 (#0)
+# ALPN, offering h2
+# ALPN, offering http/1.1
+# Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+# successfully set certificate verify locations:
+#   CAfile: /etc/ssl/certs/ca-certificates.crt
+#   CApath: /etc/ssl/certs
+# TLSv1.2 (OUT), TLS header, Certificate Status (22):
+# [5 bytes data]
+# TLSv1.2 (OUT), TLS handshake, Client hello (1):
+# [512 bytes data]
+# [5 bytes data]
+# TLSv1.2 (IN), TLS handshake, Server hello (2):
+# [70 bytes data]
+# [5 bytes data]
+# TLSv1.2 (IN), TLS handshake, Certificate (11):
+# [2454 bytes data]
+# [5 bytes data]
+# TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+# [149 bytes data]
+# [5 bytes data]
+# TLSv1.2 (IN), TLS handshake, Server finished (14):
+# [4 bytes data]
+# [5 bytes data]
+# TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+# [70 bytes data]
+# [5 bytes data]
+# TLSv1.2 (OUT), TLS change cipher, Change cipher spec (1):
+# [1 bytes data]
+# [5 bytes data]
+# TLSv1.2 (OUT), TLS handshake, Finished (20):
+# [16 bytes data]
+# [5 bytes data]
+# TLSv1.2 (IN), TLS change cipher, Change cipher spec (1):
+# [1 bytes data]
+# [5 bytes data]
+# TLSv1.2 (IN), TLS handshake, Finished (20):
+# [16 bytes data]
+# SSL connection using TLSv1.2 / ECDHE-ECDSA-AES128-GCM-SHA256
+# ALPN, server accepted to use h2
+# Server certificate:
+#  subject: C=US; ST=California; L=San Francisco; O=GitHub, Inc.; CN=github.com
+#  start date: Mar 15 00:00:00 2022 GMT
+#  expire date: Mar 15 23:59:59 2023 GMT
+#  subjectAltName: host "github.com" matched cert's "github.com"
+#  issuer: C=US; O=DigiCert Inc; CN=DigiCert TLS Hybrid ECC SHA384 2020 CA1
+#  SSL certificate verify ok.
+# Using HTTP2, server supports multi-use
+# Connection state changed (HTTP/2 confirmed)
+# Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+# [5 bytes data]
+# [5 bytes data]
+# [5 bytes data]
+# Using Stream ID: 1 (easy handle 0x1cabcb20)
+# [5 bytes data]
+# GET /opencv/ade/archive/v0.1.1f.zip HTTP/2
+# Host: github.com
+# user-agent: curl/7.72.0
+# accept: */*
+# 
+# [5 bytes data]
+# Connection state changed (MAX_CONCURRENT_STREAMS == 100)!
+# [5 bytes data]
+# [5 bytes data]
+# [5 bytes data]
+# HTTP/2 302 
+# server: GitHub.com
+# date: Fri, 04 Nov 2022 11:49:28 GMT
+# content-type: text/html; charset=utf-8
+# vary: X-PJAX, X-PJAX-Container, Turbo-Visit, Turbo-Frame, Accept-Encoding, Accept, X-Requested-With
+# location: https://codeload.github.com/opencv/ade/zip/refs/tags/v0.1.1f
+# cache-control: max-age=0, private
+# strict-transport-security: max-age=31536000; includeSubdomains; preload
+# x-frame-options: deny
+# x-content-type-options: nosniff
+# x-xss-protection: 0
+# referrer-policy: no-referrer-when-downgrade
+# content-security-policy: default-src 'none'; base-uri 'self'; block-all-mixed-content; child-src github.com/assets-cdn/worker/ gist.github.com/assets-cdn/worker/; connect-src 'self' uploads.github.com objects-origin.githubusercontent.com www.githubstatus.com collector.github.com raw.githubusercontent.com api.github.com github-cloud.s3.amazonaws.com github-production-repository-file-5c1aeb.s3.amazonaws.com github-production-upload-manifest-file-7fdce7.s3.amazonaws.com github-production-user-asset-6210df.s3.amazonaws.com cdn.optimizely.com logx.optimizely.com/v1/events *.actions.githubusercontent.com wss://*.actions.githubusercontent.com online.visualstudio.com/api/v1/locations github-production-repository-image-32fea6.s3.amazonaws.com github-production-release-asset-2e65be.s3.amazonaws.com insights.github.com wss://alive.github.com; font-src github.githubassets.com; form-action 'self' github.com gist.github.com objects-origin.githubusercontent.com; frame-ancestors 'none'; frame-src viewscreen.githubusercontent.com notebooks.githubusercontent.com; img-src 'self' data: github.githubassets.com identicons.github.com github-cloud.s3.amazonaws.com secured-user-images.githubusercontent.com/ opengraph.githubassets.com github-production-user-asset-6210df.s3.amazonaws.com customer-stories-feed.github.com spotlights-feed.github.com *.githubusercontent.com; manifest-src 'self'; media-src github.com user-images.githubusercontent.com/ secured-user-images.githubusercontent.com/; script-src github.githubassets.com; style-src 'unsafe-inline' github.githubassets.com; worker-src github.com/assets-cdn/worker/ gist.github.com/assets-cdn/worker/
+# content-length: 0
+# x-github-request-id: 4440:4672:2B56E9:2EF843:6364FCB6
+# 
+# [0 bytes data]
+# Connection #0 to host github.com left intact
+# Issue another request to this URL: 'https://codeload.github.com/opencv/ade/zip/refs/tags/v0.1.1f'
+#   Trying 20.205.243.165:443...
+# Connected to codeload.github.com (20.205.243.165) port 443 (#1)
+# ALPN, offering h2
+# ALPN, offering http/1.1
+# Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+# successfully set certificate verify locations:
+#   CAfile: /etc/ssl/certs/ca-certificates.crt
+#   CApath: /etc/ssl/certs
+# TLSv1.2 (OUT), TLS header, Certificate Status (22):
+# [5 bytes data]
+# TLSv1.2 (OUT), TLS handshake, Client hello (1):
+# [512 bytes data]
+# [5 bytes data]
+# TLSv1.2 (IN), TLS handshake, Server hello (2):
+# [70 bytes data]
+# [5 bytes data]
+# TLSv1.2 (IN), TLS handshake, Certificate (11):
+# [2451 bytes data]
+# [5 bytes data]
+# TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+# [149 bytes data]
+# [5 bytes data]
+# TLSv1.2 (IN), TLS handshake, Server finished (14):
+# [4 bytes data]
+# [5 bytes data]
+# TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+# [70 bytes data]
+# [5 bytes data]
+# TLSv1.2 (OUT), TLS change cipher, Change cipher spec (1):
+# [1 bytes data]
+# [5 bytes data]
+# TLSv1.2 (OUT), TLS handshake, Finished (20):
+# [16 bytes data]
+# [5 bytes data]
+# TLSv1.2 (IN), TLS change cipher, Change cipher spec (1):
+# [1 bytes data]
+# [5 bytes data]
+# TLSv1.2 (IN), TLS handshake, Finished (20):
+# [16 bytes data]
+# SSL connection using TLSv1.2 / ECDHE-ECDSA-AES128-GCM-SHA256
+# ALPN, server accepted to use h2
+# Server certificate:
+#  subject: C=US; ST=California; L=San Francisco; O=GitHub, Inc.; CN=*.github.com
+#  start date: Mar 16 00:00:00 2022 GMT
+#  expire date: Mar 16 23:59:59 2023 GMT
+#  subjectAltName: host "codeload.github.com" matched cert's "*.github.com"
+#  issuer: C=US; O=DigiCert Inc; CN=DigiCert TLS Hybrid ECC SHA384 2020 CA1
+#  SSL certificate verify ok.
+# Using HTTP2, server supports multi-use
+# Connection state changed (HTTP/2 confirmed)
+# Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+# [5 bytes data]
+# [5 bytes data]
+# [5 bytes data]
+# Using Stream ID: 1 (easy handle 0x1cabcb20)
+# [5 bytes data]
+# GET /opencv/ade/zip/refs/tags/v0.1.1f HTTP/2
+# Host: codeload.github.com
+# user-agent: curl/7.72.0
+# accept: */*
+# 
+# [5 bytes data]
+# Connection state changed (MAX_CONCURRENT_STREAMS == 100)!
+# [5 bytes data]
+# [5 bytes data]
+# HTTP/2 200 
+# access-control-allow-origin: https://render.githubusercontent.com
+# content-disposition: attachment; filename=ade-0.1.1f.zip
+# content-length: 166594
+# content-security-policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+# content-type: application/zip
+# etag: "d6c62c0c3b4dc6059be5fd41ab24d5e0b5d7968e0563d1c2f0e56f27d0f4a57f"
+# strict-transport-security: max-age=31536000
+# vary: Authorization,Accept-Encoding,Origin
+# x-content-type-options: nosniff
+# x-frame-options: deny
+# x-xss-protection: 1; mode=block
+# date: Fri, 04 Nov 2022 11:51:18 GMT
+# x-github-request-id: 687E:5BCC:245F6:54616:6364FCB6
+# 
+# [878 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1004 bytes data]
+# [5 bytes data]
+# [1361 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1323 bytes data]
+# [5 bytes data]
+# [1361 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1323 bytes data]
+# [5 bytes data]
+# [1361 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1323 bytes data]
+# [5 bytes data]
+# [1361 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1267 bytes data]
+# [5 bytes data]
+# [1361 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1361 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1276 bytes data]
+# [5 bytes data]
+# [1361 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1323 bytes data]
+# [5 bytes data]
+# [1361 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1267 bytes data]
+# [5 bytes data]
+# [1361 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1323 bytes data]
+# [5 bytes data]
+# [1361 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [1370 bytes data]
+# [5 bytes data]
+# [937 bytes data]
+# Connection #1 to host codeload.github.com left intact
+# 
+
+#check_md5 "/root/workfiles/opencv-4.5.4/.cache/ade/b624b995ec9c439cbc2e9e6ee940d3a2-v0.1.1f.zip"
+#mkdir "/root/workfiles/opencv-4.5.4/build/build/3rdparty/ade"
+#unpack "/root/workfiles/opencv-4.5.4/build/build/3rdparty/ade" "/root/workfiles/opencv-4.5.4/.cache/ade/b624b995ec9c439cbc2e9e6ee940d3a2-v0.1.1f.zip"

@@ -1,0 +1,316 @@
+\chapter{}
+
+\section{\emph{small.spec}}
+
+\lstset{language=C++}
+\begin{lstlisting}
+#define FEATURE_DATA_TYPE_INT8
+#define WEIGHT_DATA_TYPE_INT8
+#define WEIGHT_COMPRESSION_DISABLE
+#define WINOGRAD_DISABLE 
+#define BATCH_DISABLE
+#define SECONDARY_MEMIF_DISABLE
+#define SDP_LUT_DISABLE
+#define SDP_BS_ENABLE
+#define SDP_BN_ENABLE
+#define SDP_EW_DISABLE
+#define BDMA_DISABLE
+#define RUBIK_DISABLE
+#define RUBIK_CONTRACT_DISABLE
+#define RUBIK_RESHAPE_DISABLE
+#define PDP_ENABLE
+#define CDP_ENABLE
+#define RETIMING_DISABLE
+#define MAC_ATOMIC_C_SIZE_8
+#define MAC_ATOMIC_K_SIZE_8
+#define MEMORY_ATOMIC_SIZE_8
+#define MAX_BATCH_SIZE_x
+#define CBUF_BANK_NUMBER_32
+#define CBUF_BANK_WIDTH_8
+#define CBUF_BANK_DEPTH_512
+#define SDP_BS_THROUGHPUT_1
+#define SDP_BN_THROUGHPUT_1
+#define SDP_EW_THROUGHPUT_x
+#define PDP_THROUGHPUT_1
+#define CDP_THROUGHPUT_1
+#define PRIMARY_MEMIF_LATENCY_64
+#define SECONDARY_MEMIF_LATENCY_x
+#define PRIMARY_MEMIF_MAX_BURST_LENGTH_1
+#define PRIMARY_MEMIF_WIDTH_64
+#define SECONDARY_MEMIF_MAX_BURST_LENGTH_x
+#define SECONDARY_MEMIF_WIDTH_x
+#define MEM_ADDRESS_WIDTH_32
+#define NUM_DMA_READ_CLIENTS_7
+#define NUM_DMA_WRITE_CLIENTS_3
+
+#include "projects.spec"
+
+\end{lstlisting}
+
+
+\section{\emph{Nv\_nvdla\_wrapper.v}}
+
+\lstset{language=Verilog}
+\begin{lstlisting}
+    NV_NVDLA_apb2csb apb2csb (
+        .pclk                  (csb_clk)
+        ,.prstn                 (csb_rstn)
+        ,.csb2nvdla_ready       (m_csb2nvdla_ready)
+        ,.nvdla2csb_data        (m_nvdla2csb_data)
+        ,.nvdla2csb_valid       (m_nvdla2csb_valid)
+        ,.paddr                 (paddr)
+        ,.penable               (penable)
+        ,.psel                  (psel)
+        ,.pwdata                (pwdata)
+        ,.pwrite                (pwrite)
+        ,.csb2nvdla_addr        (m_csb2nvdla_addr)
+        ,.csb2nvdla_nposted     (m_csb2nvdla_nposted)
+        ,.csb2nvdla_valid       (m_csb2nvdla_valid)
+        ,.csb2nvdla_wdat        (m_csb2nvdla_wdat)
+        ,.csb2nvdla_write       (m_csb2nvdla_write)
+        ,.prdata                (prdata)
+        ,.pready                (pready)
+    );
+    NV_nvdla nvdla_top (
+        .dla_core_clk                    (core_clk)
+        ,.dla_csb_clk                     (csb_clk)
+        ,.global_clk_ovr_on               (1'b0)
+        ,.tmc2slcg_disable_clock_gating   (1'b0)
+        ,.dla_reset_rstn                  (rstn)
+        ,.direct_reset_                   (1'b1)
+        ,.test_mode                       (1'b0)
+        ,.csb2nvdla_valid                 (m_csb2nvdla_valid)
+        ,.csb2nvdla_ready                 (m_csb2nvdla_ready)
+        ,.csb2nvdla_addr                  (m_csb2nvdla_addr)
+        ,.csb2nvdla_wdat                  (m_csb2nvdla_wdat)
+        ,.csb2nvdla_write                 (m_csb2nvdla_write)
+        ,.csb2nvdla_nposted               (m_csb2nvdla_nposted)
+        ,.nvdla2csb_valid                 (m_nvdla2csb_valid)
+        ,.nvdla2csb_data                  (m_nvdla2csb_data)
+        ,.nvdla2csb_wr_complete           () //FIXME: no such port in apb2csb
+        ,.nvdla_core2dbb_aw_awvalid       (nvdla_core2dbb_aw_awvalid)
+        ,.nvdla_core2dbb_aw_awready       (nvdla_core2dbb_aw_awready)
+        ,.nvdla_core2dbb_aw_awaddr        (nvdla_core2dbb_aw_awaddr)
+        ,.nvdla_core2dbb_aw_awid          (nvdla_core2dbb_aw_awid)
+        ,.nvdla_core2dbb_aw_awlen         (nvdla_core2dbb_aw_awlen)
+        ,.nvdla_core2dbb_w_wvalid         (nvdla_core2dbb_w_wvalid)
+        ,.nvdla_core2dbb_w_wready         (nvdla_core2dbb_w_wready)
+        ,.nvdla_core2dbb_w_wdata          (nvdla_core2dbb_w_wdata)
+        ,.nvdla_core2dbb_w_wstrb          (nvdla_core2dbb_w_wstrb)
+        ,.nvdla_core2dbb_w_wlast          (nvdla_core2dbb_w_wlast)
+        ,.nvdla_core2dbb_b_bvalid         (nvdla_core2dbb_b_bvalid)
+        ,.nvdla_core2dbb_b_bready         (nvdla_core2dbb_b_bready)
+        ,.nvdla_core2dbb_b_bid            (nvdla_core2dbb_b_bid)
+        ,.nvdla_core2dbb_ar_arvalid       (nvdla_core2dbb_ar_arvalid)
+        ,.nvdla_core2dbb_ar_arready       (nvdla_core2dbb_ar_arready)
+        ,.nvdla_core2dbb_ar_araddr        (nvdla_core2dbb_ar_araddr)
+        ,.nvdla_core2dbb_ar_arid          (nvdla_core2dbb_ar_arid)
+        ,.nvdla_core2dbb_ar_arlen         (nvdla_core2dbb_ar_arlen)
+        ,.nvdla_core2dbb_r_rvalid         (nvdla_core2dbb_r_rvalid)
+        ,.nvdla_core2dbb_r_rready         (nvdla_core2dbb_r_rready)
+        ,.nvdla_core2dbb_r_rid            (nvdla_core2dbb_r_rid)
+        ,.nvdla_core2dbb_r_rlast          (nvdla_core2dbb_r_rlast)
+        ,.nvdla_core2dbb_r_rdata          (nvdla_core2dbb_r_rdata)
+        ,.dla_intr                        (dla_intr)
+        ,.nvdla_pwrbus_ram_c_pd           (32'b0)
+        ,.nvdla_pwrbus_ram_ma_pd          (32'b0)
+        ,.nvdla_pwrbus_ram_mb_pd          (32'b0)
+        ,.nvdla_pwrbus_ram_p_pd           (32'b0)
+        ,.nvdla_pwrbus_ram_o_pd           (32'b0)
+        ,.nvdla_pwrbus_ram_a_pd           (32'b0)
+    ); // nvdla_top
+assign nvdla_core2dbb_aw_awsize = 3'b011;
+assign nvdla_core2dbb_ar_arsize = 3'b011;
+assign m_axi_awburst = 2'b01;
+assign m_axi_awlock  = 1'b0;
+assign m_axi_awcache = 4'b0010;
+assign m_axi_awprot  = 3'h0;
+assign m_axi_awqos   = 4'h0;
+assign m_axi_awuser  = 'b1;
+assign m_axi_wuser   = 'b0;
+assign m_axi_arburst = 2'b01;
+assign m_axi_arlock  = 1'b0;
+assign m_axi_arcache = 4'b0010;
+assign m_axi_arprot  = 3'h0;
+assign m_axi_arqos   = 4'h0;
+assign m_axi_aruser  = 'b1;
+assign pslverr = 1'b0;
+endmodule
+\end{lstlisting}
+
+\section{\emph{Lenet5 量化关键代码}}
+
+\lstset{language=Python}
+\begin{lstlisting}
+# Returns a numpy buffer of shape (num_images, 1, 28, 28)
+def load_data(filepath):
+    test_imgs = []
+    global fileList
+    fileList = os.listdir(filepath)
+    mean = np.ones([3, 224, 224], dtype=np.float)
+    mean[0,:,:] = 104
+    mean[1,:,:] = 117
+    mean[2,:,:] = 123
+    for img_path in fileList:
+        img_path = filepath +'/'+ img_path
+        img = cv.imread(img_path)
+        img = crop_img(img, [224, 224])
+        img = img.transpose((2, 0, 1))
+        img = img - mean
+        test_imgs.append(img)
+    # Need to scale all values to the range of [0, 1]
+    return np.ascontiguousarray(test_imgs).astype(np.float32)
+
+# Returns a numpy buffer of shape (num_images)
+def load_labels(filepath):
+    global fileList
+    test_labels = []
+    labels_mapping = {}
+    with open(filepath, 'r') as f:
+        lines = f.readlines()
+        for each in lines:
+            imageName, labels = each.strip('\n').split(' ')
+            labels_mapping[imageName] = int(labels)
+    for each in fileList:
+        test_labels.append(labels_mapping[each])
+    return np.ascontiguousarray(test_labels)
+\end{lstlisting}
+
+\section{\emph{Cache to Json}}
+
+\lstset{language=Python}
+\begin{lstlisting}
+import json
+from collections import OrderedDict
+from google.protobuf import text_format
+import caffe.proto.caffe_pb2 as caffe_pb2      # 载入caffe.proto编译生成的caffe_pb2文件
+
+
+caffeprototxt_path = "./deploy.prototxt"
+calibletable_json_path = "./resnet18-cifar10-int8.json"
+# load deploy.prototxt
+net = caffe_pb2.NetParameter()
+text_format.Merge(open(caffeprototxt_path).read(), net)
+# load jsonfile
+with open(calibletable_json_path, "r") as f:
+    calible = json.load(f, object_pairs_hook=OrderedDict)
+_scales = []
+_mins = []
+_maxs = []
+_offsets = []
+_new = OrderedDict()
+items = calible.items()
+for key, value in items:
+    _scales.append(value['scale'])
+    _mins.append(value['min'])
+    _maxs.append(value['max'])
+    _offsets.append(value['offset'])
+for idx, _layer in enumerate(net.layer):
+    _tempDict =  OrderedDict({
+        "scale": _scales[idx],
+        "min": _mins[idx],
+        "max": _maxs[idx],
+        "offset": _offsets[idx],
+    }) 
+    _new[_layer.name] =_tempDict
+with open('resnet18-cifar10-int8-fixed.json', 'w') as f:
+    json.dump(_new, f)
+\end{lstlisting}
+
+\section{\emph{system-user.dtsi}}
+
+\begin{lstlisting}
+/include/ "system-conf.dtsi"
+/ {
+    reserved-memory {
+        #address-cells = <1>;
+        #size-cells = <1>;
+        ranges;
+    
+        nvdla_reserved: buffer@0x30000000 {
+            compatible = "shared-dma-pool";
+            no-map;
+            reg = <0x30000000 0x10000000>;
+        };
+    };
+};
+
+&NV_nvdla_wrapper_0{
+    compatible = "nvidia,nv_small";
+    memory-region = <&nvdla_reserved>;
+};
+\end{lstlisting}
+
+\section{\emph{Makefile}}
+
+\begin{lstlisting}
+obj-m := opendla.o
+
+###append all of sources###
+opendla-objs := nvdla_core_callbacks.o nvdla_gem.o scheduler.o engine.o bdma.o conv.o sdp.o cdp.o pdp.o rubik.o cache.o common.o engine_data.o engine_isr.o engine_debug.o
+###########################
+
+
+SRC := $(shell pwd)
+
+all:
+    $(MAKE) -C $(KERNEL_SRC) M=$(SRC)
+
+modules_install:
+    $(MAKE) -C $(KERNEL_SRC) M=$(SRC) modules_install
+
+clean:
+    rm -f *.o *~ core .depend .*.cmd *.ko *.mod.c
+    rm -f Module.markers Module.symvers modules.order
+    rm -rf .tmp_versions Modules.symvers
+\end{lstlisting}
+
+\section{\emph{opendla.bb}}
+
+\begin{lstlisting}
+SUMMARY = "Recipe for  build an external opendla Linux kernel module"
+SECTION = "PETALINUX/modules"
+LICENSE = "GPLv2"
+LIC_FILES_CHKSUM = "file://COPYING;md5=12f884d2ae1ff87c09e5b7ccc2c4ca7e"
+
+inherit module
+
+SRC_URI = "file://Makefile \
+            file://nvdla_core_callbacks.c \
+            file://nvdla_gem.c \
+            file://scheduler.c \
+            file://engine.c \
+            file://bdma.c \
+            file://conv.c \
+            file://sdp.c \
+            file://cdp.c \
+            file://pdp.c \
+            file://rubik.c \
+            file://cache.c \
+            file://common.c \
+            file://engine_data.c \
+            file://engine_isr.c \
+            file://engine_debug.c \
+            file://common.h \
+            file://dla_debug.h \
+            file://dla_fw_version.h \
+            file://dla_engine.h \
+            file://dla_engine_internal.h \
+            file://dla_err.h \
+            file://dla_interface.h \
+            file://dla_sched.h \
+            file://engine_debug.h \
+            file://nvdla_interface.h \
+            file://nvdla_linux.h \
+            file://opendla.h \
+            file://opendla_initial.h \
+            file://opendla_small.h \
+            file://nvdla_ioctl.h \
+            file://COPYING \
+        "
+S = "${WORKDIR}"
+
+# The inherit of module.bbclass will automatically name module packages with
+# "kernel-module-" prefix as required by the oe-core build environment.
+\end{lstlisting}
+

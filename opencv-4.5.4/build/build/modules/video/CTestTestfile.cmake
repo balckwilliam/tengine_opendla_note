@@ -1,0 +1,12 @@
+# CMake generated Testfile for 
+# Source directory: /root/workfiles/opencv-4.5.4/modules/video
+# Build directory: /root/workfiles/opencv-4.5.4/build/build/modules/video
+# 
+# This file includes the relevant testing commands required for 
+# testing this directory and lists subdirectories to be tested as well.
+add_test(opencv_test_video "/root/workfiles/opencv-4.5.4/build/build/bin/opencv_test_video" "--gtest_output=xml:opencv_test_video.xml")
+set_tests_properties(opencv_test_video PROPERTIES  LABELS "Main;opencv_video;Accuracy" WORKING_DIRECTORY "/root/workfiles/opencv-4.5.4/build/build/test-reports/accuracy" _BACKTRACE_TRIPLES "/root/workfiles/opencv-4.5.4/cmake/OpenCVUtils.cmake;1738;add_test;/root/workfiles/opencv-4.5.4/cmake/OpenCVModule.cmake;1352;ocv_add_test_from_target;/root/workfiles/opencv-4.5.4/cmake/OpenCVModule.cmake;1110;ocv_add_accuracy_tests;/root/workfiles/opencv-4.5.4/modules/video/CMakeLists.txt;2;ocv_define_module;/root/workfiles/opencv-4.5.4/modules/video/CMakeLists.txt;0;")
+add_test(opencv_perf_video "/root/workfiles/opencv-4.5.4/build/build/bin/opencv_perf_video" "--gtest_output=xml:opencv_perf_video.xml")
+set_tests_properties(opencv_perf_video PROPERTIES  LABELS "Main;opencv_video;Performance" WORKING_DIRECTORY "/root/workfiles/opencv-4.5.4/build/build/test-reports/performance" _BACKTRACE_TRIPLES "/root/workfiles/opencv-4.5.4/cmake/OpenCVUtils.cmake;1738;add_test;/root/workfiles/opencv-4.5.4/cmake/OpenCVModule.cmake;1251;ocv_add_test_from_target;/root/workfiles/opencv-4.5.4/cmake/OpenCVModule.cmake;1111;ocv_add_perf_tests;/root/workfiles/opencv-4.5.4/modules/video/CMakeLists.txt;2;ocv_define_module;/root/workfiles/opencv-4.5.4/modules/video/CMakeLists.txt;0;")
+add_test(opencv_sanity_video "/root/workfiles/opencv-4.5.4/build/build/bin/opencv_perf_video" "--gtest_output=xml:opencv_perf_video.xml" "--perf_min_samples=1" "--perf_force_samples=1" "--perf_verify_sanity")
+set_tests_properties(opencv_sanity_video PROPERTIES  LABELS "Main;opencv_video;Sanity" WORKING_DIRECTORY "/root/workfiles/opencv-4.5.4/build/build/test-reports/sanity" _BACKTRACE_TRIPLES "/root/workfiles/opencv-4.5.4/cmake/OpenCVUtils.cmake;1738;add_test;/root/workfiles/opencv-4.5.4/cmake/OpenCVModule.cmake;1252;ocv_add_test_from_target;/root/workfiles/opencv-4.5.4/cmake/OpenCVModule.cmake;1111;ocv_add_perf_tests;/root/workfiles/opencv-4.5.4/modules/video/CMakeLists.txt;2;ocv_define_module;/root/workfiles/opencv-4.5.4/modules/video/CMakeLists.txt;0;")

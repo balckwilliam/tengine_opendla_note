@@ -1,0 +1,3573 @@
+Determining if compiler supports needed C++17 constructs failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_32fc4/fast && make  -f CMakeFiles/cmTC_32fc4.dir/build.make CMakeFiles/cmTC_32fc4.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_32fc4.dir/cm_cxx17_check.cpp.o
+/usr/bin/g++   -std=gnu++1z -o CMakeFiles/cmTC_32fc4.dir/cm_cxx17_check.cpp.o -c /root/workfiles/cmake/cmake-3.19.5/Source/Checks/cm_cxx17_check.cpp
+/root/workfiles/cmake/cmake-3.19.5/Source/Checks/cm_cxx17_check.cpp:4:20: fatal error: optional: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_32fc4.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_32fc4.dir/cm_cxx17_check.cpp.o' failed
+make[1]: *** [CMakeFiles/cmTC_32fc4.dir/cm_cxx17_check.cpp.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_32fc4/fast' failed
+make: *** [cmTC_32fc4/fast] Error 2
+
+
+
+Determining if the environ exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_8d1f6/fast && make  -f CMakeFiles/cmTC_8d1f6.dir/build.make CMakeFiles/cmTC_8d1f6.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8d1f6.dir/CheckSymbolExists.c.o
+/usr/bin/gcc   -std=gnu11 -o CMakeFiles/cmTC_8d1f6.dir/CheckSymbolExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: error: 'environ' undeclared (first use in this function)
+   return ((int*)(&environ))[argc];
+                   ^
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_8d1f6.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_8d1f6.dir/CheckSymbolExists.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_8d1f6.dir/CheckSymbolExists.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_8d1f6/fast' failed
+make: *** [cmTC_8d1f6/fast] Error 2
+
+
+File /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdlib.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef environ
+  return ((int*)(&environ))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_bf3c0/fast && make  -f CMakeFiles/cmTC_bf3c0.dir/build.make CMakeFiles/cmTC_bf3c0.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_bf3c0.dir/src.c.o
+/usr/bin/gcc -DCMAKE_HAVE_LIBC_PTHREAD  -std=gnu11 -o CMakeFiles/cmTC_bf3c0.dir/src.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_bf3c0
+/root/workfiles/cmake/cmake-3.19.5/Bootstrap.cmk/cmake -E cmake_link_script CMakeFiles/cmTC_bf3c0.dir/link.txt --verbose=1
+/usr/bin/gcc CMakeFiles/cmTC_bf3c0.dir/src.c.o -o cmTC_bf3c0 
+CMakeFiles/cmTC_bf3c0.dir/src.c.o: In function `main':
+src.c:(.text+0x48): undefined reference to `pthread_create'
+src.c:(.text+0x50): undefined reference to `pthread_detach'
+src.c:(.text+0x58): undefined reference to `pthread_cancel'
+src.c:(.text+0x64): undefined reference to `pthread_join'
+src.c:(.text+0x74): undefined reference to `pthread_atfork'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_bf3c0.dir/build.make:105: recipe for target 'cmTC_bf3c0' failed
+make[1]: *** [cmTC_bf3c0] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_bf3c0/fast' failed
+make: *** [cmTC_bf3c0/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ffcc9/fast && make  -f CMakeFiles/cmTC_ffcc9.dir/build.make CMakeFiles/cmTC_ffcc9.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ffcc9.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -DCHECK_FUNCTION_EXISTS=pthread_create -std=gnu11 -o CMakeFiles/cmTC_ffcc9.dir/CheckFunctionExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_ffcc9
+/root/workfiles/cmake/cmake-3.19.5/Bootstrap.cmk/cmake -E cmake_link_script CMakeFiles/cmTC_ffcc9.dir/link.txt --verbose=1
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=pthread_create CMakeFiles/cmTC_ffcc9.dir/CheckFunctionExists.c.o -o cmTC_ffcc9  -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_ffcc9.dir/build.make:105: recipe for target 'cmTC_ffcc9' failed
+make[1]: *** [cmTC_ffcc9] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_ffcc9/fast' failed
+make: *** [cmTC_ffcc9/fast] Error 2
+
+
+
+Checking whether CXX compiler has environ in stdlib.h failed to compile with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/Source/kwsys/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_d13cb/fast && make  -f CMakeFiles/cmTC_d13cb.dir/build.make CMakeFiles/cmTC_d13cb.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/Source/kwsys/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_d13cb.dir/kwsysPlatformTestsCXX.cxx.o
+/usr/bin/g++ -DTEST_KWSYS_CXX_HAS_ENVIRON_IN_STDLIB_H  -std=gnu++14 -o CMakeFiles/cmTC_d13cb.dir/kwsysPlatformTestsCXX.cxx.o -c /root/workfiles/cmake/cmake-3.19.5/Source/kwsys/kwsysPlatformTestsCXX.cxx
+/root/workfiles/cmake/cmake-3.19.5/Source/kwsys/kwsysPlatformTestsCXX.cxx: In function 'int main()':
+/root/workfiles/cmake/cmake-3.19.5/Source/kwsys/kwsysPlatformTestsCXX.cxx:53:13: error: 'environ' was not declared in this scope
+   char* e = environ[0];
+             ^
+CMakeFiles/cmTC_d13cb.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_d13cb.dir/kwsysPlatformTestsCXX.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_d13cb.dir/kwsysPlatformTestsCXX.cxx.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/Source/kwsys/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_d13cb/fast' failed
+make: *** [cmTC_d13cb/fast] Error 2
+
+
+
+Checking whether CXX compiler struct stat has st_mtimespec member failed to compile with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/Source/kwsys/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_6c865/fast && make  -f CMakeFiles/cmTC_6c865.dir/build.make CMakeFiles/cmTC_6c865.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/Source/kwsys/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_6c865.dir/kwsysPlatformTestsCXX.cxx.o
+/usr/bin/g++ -DTEST_KWSYS_CXX_STAT_HAS_ST_MTIMESPEC  -std=gnu++14 -o CMakeFiles/cmTC_6c865.dir/kwsysPlatformTestsCXX.cxx.o -c /root/workfiles/cmake/cmake-3.19.5/Source/kwsys/kwsysPlatformTestsCXX.cxx
+/root/workfiles/cmake/cmake-3.19.5/Source/kwsys/kwsysPlatformTestsCXX.cxx: In function 'int main()':
+/root/workfiles/cmake/cmake-3.19.5/Source/kwsys/kwsysPlatformTestsCXX.cxx:26:15: error: 'struct stat' has no member named 'st_mtimespec'
+   (void)stat1.st_mtimespec.tv_sec;
+               ^
+/root/workfiles/cmake/cmake-3.19.5/Source/kwsys/kwsysPlatformTestsCXX.cxx:27:15: error: 'struct stat' has no member named 'st_mtimespec'
+   (void)stat1.st_mtimespec.tv_nsec;
+               ^
+CMakeFiles/cmTC_6c865.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_6c865.dir/kwsysPlatformTestsCXX.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_6c865.dir/kwsysPlatformTestsCXX.cxx.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/Source/kwsys/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_6c865/fast' failed
+make: *** [cmTC_6c865/fast] Error 2
+
+
+
+Determining if the function connect exists in the socket;dl failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_7b3a2/fast && make  -f CMakeFiles/cmTC_7b3a2.dir/build.make CMakeFiles/cmTC_7b3a2.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7b3a2.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -w -DCHECK_FUNCTION_EXISTS=connect -std=gnu11 -o CMakeFiles/cmTC_7b3a2.dir/CheckFunctionExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_7b3a2
+/root/workfiles/cmake/cmake-3.19.5/Bootstrap.cmk/cmake -E cmake_link_script CMakeFiles/cmTC_7b3a2.dir/link.txt --verbose=1
+/usr/bin/gcc   -w -DCHECK_FUNCTION_EXISTS=connect CMakeFiles/cmTC_7b3a2.dir/CheckFunctionExists.c.o -o cmTC_7b3a2  -lsocket -ldl 
+/usr/bin/ld: cannot find -lsocket
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_7b3a2.dir/build.make:105: recipe for target 'cmTC_7b3a2' failed
+make[1]: *** [cmTC_7b3a2] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_7b3a2/fast' failed
+make: *** [cmTC_7b3a2/fast] Error 2
+
+
+
+Determining if the function recv exists in the network;dl failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_fa606/fast && make  -f CMakeFiles/cmTC_fa606.dir/build.make CMakeFiles/cmTC_fa606.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fa606.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -w -DCHECK_FUNCTION_EXISTS=recv -std=gnu11 -o CMakeFiles/cmTC_fa606.dir/CheckFunctionExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_fa606
+/root/workfiles/cmake/cmake-3.19.5/Bootstrap.cmk/cmake -E cmake_link_script CMakeFiles/cmTC_fa606.dir/link.txt --verbose=1
+/usr/bin/gcc   -w -DCHECK_FUNCTION_EXISTS=recv CMakeFiles/cmTC_fa606.dir/CheckFunctionExists.c.o -o cmTC_fa606  -lnetwork -ldl 
+/usr/bin/ld: cannot find -lnetwork
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_fa606.dir/build.make:105: recipe for target 'cmTC_fa606' failed
+make[1]: *** [cmTC_fa606] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_fa606/fast' failed
+make: *** [cmTC_fa606/fast] Error 2
+
+
+
+Determining if the RAND_status exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_5a36d/fast && make  -f CMakeFiles/cmTC_5a36d.dir/build.make CMakeFiles/cmTC_5a36d.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5a36d.dir/CheckSymbolExists.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_5a36d.dir/CheckSymbolExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: error: 'RAND_status' undeclared (first use in this function)
+   return ((int*)(&RAND_status))[argc];
+                   ^
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_5a36d.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_5a36d.dir/CheckSymbolExists.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_5a36d.dir/CheckSymbolExists.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_5a36d/fast' failed
+make: *** [cmTC_5a36d/fast] Error 2
+
+
+File /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef RAND_status
+  return ((int*)(&RAND_status))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the RAND_screen exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_4dff9/fast && make  -f CMakeFiles/cmTC_4dff9.dir/build.make CMakeFiles/cmTC_4dff9.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4dff9.dir/CheckSymbolExists.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_4dff9.dir/CheckSymbolExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: error: 'RAND_screen' undeclared (first use in this function)
+   return ((int*)(&RAND_screen))[argc];
+                   ^
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_4dff9.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_4dff9.dir/CheckSymbolExists.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_4dff9.dir/CheckSymbolExists.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_4dff9/fast' failed
+make: *** [cmTC_4dff9/fast] Error 2
+
+
+File /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef RAND_screen
+  return ((int*)(&RAND_screen))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the RAND_egd exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_3483f/fast && make  -f CMakeFiles/cmTC_3483f.dir/build.make CMakeFiles/cmTC_3483f.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3483f.dir/CheckSymbolExists.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_3483f.dir/CheckSymbolExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: error: 'RAND_egd' undeclared (first use in this function)
+   return ((int*)(&RAND_egd))[argc];
+                   ^
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_3483f.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_3483f.dir/CheckSymbolExists.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_3483f.dir/CheckSymbolExists.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_3483f/fast' failed
+make: *** [cmTC_3483f/fast] Error 2
+
+
+File /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef RAND_egd
+  return ((int*)(&RAND_egd))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the function idn2_lookup_ul exists in the idn2;dl;/usr/lib/aarch64-linux-gnu/libssl.so;/usr/lib/aarch64-linux-gnu/libcrypto.so;cmnghttp2 failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_674e1/fast && make  -f CMakeFiles/cmTC_674e1.dir/build.make CMakeFiles/cmTC_674e1.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_674e1.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -w -DCHECK_FUNCTION_EXISTS=idn2_lookup_ul -std=gnu11 -o CMakeFiles/cmTC_674e1.dir/CheckFunctionExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_674e1
+/root/workfiles/cmake/cmake-3.19.5/Bootstrap.cmk/cmake -E cmake_link_script CMakeFiles/cmTC_674e1.dir/link.txt --verbose=1
+/usr/bin/gcc   -w -DCHECK_FUNCTION_EXISTS=idn2_lookup_ul CMakeFiles/cmTC_674e1.dir/CheckFunctionExists.c.o -o cmTC_674e1  -lidn2 -ldl -lssl -lcrypto -lcmnghttp2 
+/usr/bin/ld: cannot find -lidn2
+/usr/bin/ld: cannot find -lcmnghttp2
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_674e1.dir/build.make:107: recipe for target 'cmTC_674e1' failed
+make[1]: *** [cmTC_674e1] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_674e1/fast' failed
+make: *** [cmTC_674e1/fast] Error 2
+
+
+
+Determining if the function dlopen exists in the dl;/usr/lib/aarch64-linux-gnu/libssl.so;/usr/lib/aarch64-linux-gnu/libcrypto.so;cmnghttp2 failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_a03dc/fast && make  -f CMakeFiles/cmTC_a03dc.dir/build.make CMakeFiles/cmTC_a03dc.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a03dc.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -w -DCHECK_FUNCTION_EXISTS=dlopen -std=gnu11 -o CMakeFiles/cmTC_a03dc.dir/CheckFunctionExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_a03dc
+/root/workfiles/cmake/cmake-3.19.5/Bootstrap.cmk/cmake -E cmake_link_script CMakeFiles/cmTC_a03dc.dir/link.txt --verbose=1
+/usr/bin/gcc   -w -DCHECK_FUNCTION_EXISTS=dlopen CMakeFiles/cmTC_a03dc.dir/CheckFunctionExists.c.o -o cmTC_a03dc  -ldl -lssl -lcrypto -lcmnghttp2 
+/usr/bin/ld: cannot find -lcmnghttp2
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_a03dc.dir/build.make:107: recipe for target 'cmTC_a03dc' failed
+make[1]: *** [cmTC_a03dc] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_a03dc/fast' failed
+make: *** [cmTC_a03dc/fast] Error 2
+
+
+
+Determining if files stdio.h;inttypes.h;sys/filio.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_61023/fast && make  -f CMakeFiles/cmTC_61023.dir/build.make CMakeFiles/cmTC_61023.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_61023.dir/HAVE_SYS_FILIO_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_61023.dir/HAVE_SYS_FILIO_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_SYS_FILIO_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_SYS_FILIO_H.c:4:23: fatal error: sys/filio.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_61023.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_61023.dir/HAVE_SYS_FILIO_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_61023.dir/HAVE_SYS_FILIO_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_61023/fast' failed
+make: *** [cmTC_61023/fast] Error 2
+
+
+Source:
+/* */
+#include <stdio.h>
+#include <inttypes.h>
+#include <sys/filio.h>
+
+
+int main(void){return 0;}
+
+Determining if files stdio.h;inttypes.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/resource.h;sys/select.h;sys/socket.h;sys/sockio.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_9a199/fast && make  -f CMakeFiles/cmTC_9a199.dir/build.make CMakeFiles/cmTC_9a199.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9a199.dir/HAVE_SYS_SOCKIO_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_9a199.dir/HAVE_SYS_SOCKIO_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_SYS_SOCKIO_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_SYS_SOCKIO_H.c:10:24: fatal error: sys/sockio.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_9a199.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_9a199.dir/HAVE_SYS_SOCKIO_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_9a199.dir/HAVE_SYS_SOCKIO_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_9a199/fast' failed
+make: *** [cmTC_9a199/fast] Error 2
+
+
+Source:
+/* */
+#include <stdio.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/sockio.h>
+
+
+int main(void){return 0;}
+
+Determining if files stdio.h;inttypes.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/resource.h;sys/select.h;sys/socket.h;sys/stat.h;sys/time.h;sys/types.h;sys/uio.h;sys/un.h;sys/utime.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_01aad/fast && make  -f CMakeFiles/cmTC_01aad.dir/build.make CMakeFiles/cmTC_01aad.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_01aad.dir/HAVE_SYS_UTIME_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_01aad.dir/HAVE_SYS_UTIME_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_SYS_UTIME_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_SYS_UTIME_H.c:15:23: fatal error: sys/utime.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_01aad.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_01aad.dir/HAVE_SYS_UTIME_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_01aad.dir/HAVE_SYS_UTIME_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_01aad/fast' failed
+make: *** [cmTC_01aad/fast] Error 2
+
+
+Source:
+/* */
+#include <stdio.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <sys/un.h>
+#include <sys/utime.h>
+
+
+int main(void){return 0;}
+
+Determining if files stdio.h;inttypes.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/resource.h;sys/select.h;sys/socket.h;sys/stat.h;sys/time.h;sys/types.h;sys/uio.h;sys/un.h;sys/xattr.h;alloca.h;arpa/inet.h;arpa/tftp.h;assert.h;crypto.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_c2d32/fast && make  -f CMakeFiles/cmTC_c2d32.dir/build.make CMakeFiles/cmTC_c2d32.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c2d32.dir/HAVE_CRYPTO_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_c2d32.dir/HAVE_CRYPTO_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_CRYPTO_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_CRYPTO_H.c:20:20: fatal error: crypto.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_c2d32.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_c2d32.dir/HAVE_CRYPTO_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_c2d32.dir/HAVE_CRYPTO_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_c2d32/fast' failed
+make: *** [cmTC_c2d32/fast] Error 2
+
+
+Source:
+/* */
+#include <stdio.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <alloca.h>
+#include <arpa/inet.h>
+#include <arpa/tftp.h>
+#include <assert.h>
+#include <crypto.h>
+
+
+int main(void){return 0;}
+
+Determining if files stdio.h;inttypes.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/resource.h;sys/select.h;sys/socket.h;sys/stat.h;sys/time.h;sys/types.h;sys/uio.h;sys/un.h;sys/xattr.h;alloca.h;arpa/inet.h;arpa/tftp.h;assert.h;err.h;errno.h;fcntl.h;idn2.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_c8bbc/fast && make  -f CMakeFiles/cmTC_c8bbc.dir/build.make CMakeFiles/cmTC_c8bbc.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c8bbc.dir/HAVE_IDN2_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_c8bbc.dir/HAVE_IDN2_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_IDN2_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_IDN2_H.c:23:18: fatal error: idn2.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_c8bbc.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_c8bbc.dir/HAVE_IDN2_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_c8bbc.dir/HAVE_IDN2_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_c8bbc/fast' failed
+make: *** [cmTC_c8bbc/fast] Error 2
+
+
+Source:
+/* */
+#include <stdio.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <alloca.h>
+#include <arpa/inet.h>
+#include <arpa/tftp.h>
+#include <assert.h>
+#include <err.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <idn2.h>
+
+
+int main(void){return 0;}
+
+Determining if files stdio.h;inttypes.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/resource.h;sys/select.h;sys/socket.h;sys/stat.h;sys/time.h;sys/types.h;sys/uio.h;sys/un.h;sys/xattr.h;alloca.h;arpa/inet.h;arpa/tftp.h;assert.h;err.h;errno.h;fcntl.h;ifaddrs.h;io.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_5591c/fast && make  -f CMakeFiles/cmTC_5591c.dir/build.make CMakeFiles/cmTC_5591c.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5591c.dir/HAVE_IO_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_5591c.dir/HAVE_IO_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_IO_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_IO_H.c:24:16: fatal error: io.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_5591c.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_5591c.dir/HAVE_IO_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_5591c.dir/HAVE_IO_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_5591c/fast' failed
+make: *** [cmTC_5591c/fast] Error 2
+
+
+Source:
+/* */
+#include <stdio.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <alloca.h>
+#include <arpa/inet.h>
+#include <arpa/tftp.h>
+#include <assert.h>
+#include <err.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <io.h>
+
+
+int main(void){return 0;}
+
+Determining if files stdio.h;inttypes.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/resource.h;sys/select.h;sys/socket.h;sys/stat.h;sys/time.h;sys/types.h;sys/uio.h;sys/un.h;sys/xattr.h;alloca.h;arpa/inet.h;arpa/tftp.h;assert.h;err.h;errno.h;fcntl.h;ifaddrs.h;krb.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_d6788/fast && make  -f CMakeFiles/cmTC_d6788.dir/build.make CMakeFiles/cmTC_d6788.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d6788.dir/HAVE_KRB_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_d6788.dir/HAVE_KRB_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_KRB_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_KRB_H.c:24:17: fatal error: krb.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_d6788.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_d6788.dir/HAVE_KRB_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_d6788.dir/HAVE_KRB_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_d6788/fast' failed
+make: *** [cmTC_d6788/fast] Error 2
+
+
+Source:
+/* */
+#include <stdio.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <alloca.h>
+#include <arpa/inet.h>
+#include <arpa/tftp.h>
+#include <assert.h>
+#include <err.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <krb.h>
+
+
+int main(void){return 0;}
+
+Determining if files stdio.h;inttypes.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/resource.h;sys/select.h;sys/socket.h;sys/stat.h;sys/time.h;sys/types.h;sys/uio.h;sys/un.h;sys/xattr.h;alloca.h;arpa/inet.h;arpa/tftp.h;assert.h;err.h;errno.h;fcntl.h;ifaddrs.h;libgen.h;locale.h;net/if.h;netdb.h;netinet/in.h;netinet/tcp.h;pem.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_45ba0/fast && make  -f CMakeFiles/cmTC_45ba0.dir/build.make CMakeFiles/cmTC_45ba0.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_45ba0.dir/HAVE_PEM_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_45ba0.dir/HAVE_PEM_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_PEM_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_PEM_H.c:30:17: fatal error: pem.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_45ba0.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_45ba0.dir/HAVE_PEM_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_45ba0.dir/HAVE_PEM_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_45ba0/fast' failed
+make: *** [cmTC_45ba0/fast] Error 2
+
+
+Source:
+/* */
+#include <stdio.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <alloca.h>
+#include <arpa/inet.h>
+#include <arpa/tftp.h>
+#include <assert.h>
+#include <err.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <pem.h>
+
+
+int main(void){return 0;}
+
+Determining if files stdio.h;inttypes.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/resource.h;sys/select.h;sys/socket.h;sys/stat.h;sys/time.h;sys/types.h;sys/uio.h;sys/un.h;sys/xattr.h;alloca.h;arpa/inet.h;arpa/tftp.h;assert.h;err.h;errno.h;fcntl.h;ifaddrs.h;libgen.h;locale.h;net/if.h;netdb.h;netinet/in.h;netinet/tcp.h;poll.h;pwd.h;rsa.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_9b813/fast && make  -f CMakeFiles/cmTC_9b813.dir/build.make CMakeFiles/cmTC_9b813.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9b813.dir/HAVE_RSA_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_9b813.dir/HAVE_RSA_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_RSA_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_RSA_H.c:32:17: fatal error: rsa.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_9b813.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_9b813.dir/HAVE_RSA_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_9b813.dir/HAVE_RSA_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_9b813/fast' failed
+make: *** [cmTC_9b813/fast] Error 2
+
+
+Source:
+/* */
+#include <stdio.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <alloca.h>
+#include <arpa/inet.h>
+#include <arpa/tftp.h>
+#include <assert.h>
+#include <err.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <rsa.h>
+
+
+int main(void){return 0;}
+
+Determining if files stdio.h;inttypes.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/resource.h;sys/select.h;sys/socket.h;sys/stat.h;sys/time.h;sys/types.h;sys/uio.h;sys/un.h;sys/xattr.h;alloca.h;arpa/inet.h;arpa/tftp.h;assert.h;err.h;errno.h;fcntl.h;ifaddrs.h;libgen.h;locale.h;net/if.h;netdb.h;netinet/in.h;netinet/tcp.h;poll.h;pwd.h;setjmp.h;sgtty.h;signal.h;ssl.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_142d5/fast && make  -f CMakeFiles/cmTC_142d5.dir/build.make CMakeFiles/cmTC_142d5.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_142d5.dir/HAVE_SSL_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_142d5.dir/HAVE_SSL_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_SSL_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_SSL_H.c:35:17: fatal error: ssl.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_142d5.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_142d5.dir/HAVE_SSL_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_142d5.dir/HAVE_SSL_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_142d5/fast' failed
+make: *** [cmTC_142d5/fast] Error 2
+
+
+Source:
+/* */
+#include <stdio.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <alloca.h>
+#include <arpa/inet.h>
+#include <arpa/tftp.h>
+#include <assert.h>
+#include <err.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <setjmp.h>
+#include <sgtty.h>
+#include <signal.h>
+#include <ssl.h>
+
+
+int main(void){return 0;}
+
+Determining if files stdio.h;inttypes.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/resource.h;sys/select.h;sys/socket.h;sys/stat.h;sys/time.h;sys/types.h;sys/uio.h;sys/un.h;sys/xattr.h;alloca.h;arpa/inet.h;arpa/tftp.h;assert.h;err.h;errno.h;fcntl.h;ifaddrs.h;libgen.h;locale.h;net/if.h;netdb.h;netinet/in.h;netinet/tcp.h;poll.h;pwd.h;setjmp.h;sgtty.h;signal.h;stdbool.h;stdint.h;stdio.h;stdlib.h;string.h;strings.h;stropts.h;termio.h;termios.h;time.h;unistd.h;utime.h;x509.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_08d42/fast && make  -f CMakeFiles/cmTC_08d42.dir/build.make CMakeFiles/cmTC_08d42.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_08d42.dir/HAVE_X509_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_08d42.dir/HAVE_X509_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_X509_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_X509_H.c:47:18: fatal error: x509.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_08d42.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_08d42.dir/HAVE_X509_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_08d42.dir/HAVE_X509_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_08d42/fast' failed
+make: *** [cmTC_08d42/fast] Error 2
+
+
+Source:
+/* */
+#include <stdio.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <alloca.h>
+#include <arpa/inet.h>
+#include <arpa/tftp.h>
+#include <assert.h>
+#include <err.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <setjmp.h>
+#include <sgtty.h>
+#include <signal.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <stropts.h>
+#include <termio.h>
+#include <termios.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+#include <x509.h>
+
+
+int main(void){return 0;}
+
+Determining if files stdio.h;inttypes.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/resource.h;sys/select.h;sys/socket.h;sys/stat.h;sys/time.h;sys/types.h;sys/uio.h;sys/un.h;sys/xattr.h;alloca.h;arpa/inet.h;arpa/tftp.h;assert.h;err.h;errno.h;fcntl.h;ifaddrs.h;libgen.h;locale.h;net/if.h;netdb.h;netinet/in.h;netinet/tcp.h;poll.h;pwd.h;setjmp.h;sgtty.h;signal.h;stdbool.h;stdint.h;stdio.h;stdlib.h;string.h;strings.h;stropts.h;termio.h;termios.h;time.h;unistd.h;utime.h;process.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ae5c6/fast && make  -f CMakeFiles/cmTC_ae5c6.dir/build.make CMakeFiles/cmTC_ae5c6.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ae5c6.dir/HAVE_PROCESS_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_ae5c6.dir/HAVE_PROCESS_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_PROCESS_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_PROCESS_H.c:47:21: fatal error: process.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_ae5c6.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_ae5c6.dir/HAVE_PROCESS_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_ae5c6.dir/HAVE_PROCESS_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_ae5c6/fast' failed
+make: *** [cmTC_ae5c6/fast] Error 2
+
+
+Source:
+/* */
+#include <stdio.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <alloca.h>
+#include <arpa/inet.h>
+#include <arpa/tftp.h>
+#include <assert.h>
+#include <err.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <setjmp.h>
+#include <sgtty.h>
+#include <signal.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <stropts.h>
+#include <termio.h>
+#include <termios.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+#include <process.h>
+
+
+int main(void){return 0;}
+
+Determining if files stdio.h;inttypes.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/resource.h;sys/select.h;sys/socket.h;sys/stat.h;sys/time.h;sys/types.h;sys/uio.h;sys/un.h;sys/xattr.h;alloca.h;arpa/inet.h;arpa/tftp.h;assert.h;err.h;errno.h;fcntl.h;ifaddrs.h;libgen.h;locale.h;net/if.h;netdb.h;netinet/in.h;netinet/tcp.h;poll.h;pwd.h;setjmp.h;sgtty.h;signal.h;stdbool.h;stdint.h;stdio.h;stdlib.h;string.h;strings.h;stropts.h;termio.h;termios.h;time.h;unistd.h;utime.h;stddef.h;dlfcn.h;malloc.h;memory.h;netinet/if_ether.h;stdint.h;sockio.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ca450/fast && make  -f CMakeFiles/cmTC_ca450.dir/build.make CMakeFiles/cmTC_ca450.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ca450.dir/HAVE_SOCKIO_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_ca450.dir/HAVE_SOCKIO_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_SOCKIO_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_SOCKIO_H.c:53:20: fatal error: sockio.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_ca450.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_ca450.dir/HAVE_SOCKIO_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_ca450.dir/HAVE_SOCKIO_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_ca450/fast' failed
+make: *** [cmTC_ca450/fast] Error 2
+
+
+Source:
+/* */
+#include <stdio.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <alloca.h>
+#include <arpa/inet.h>
+#include <arpa/tftp.h>
+#include <assert.h>
+#include <err.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <setjmp.h>
+#include <sgtty.h>
+#include <signal.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <stropts.h>
+#include <termio.h>
+#include <termios.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+#include <stddef.h>
+#include <dlfcn.h>
+#include <malloc.h>
+#include <memory.h>
+#include <netinet/if_ether.h>
+#include <stdint.h>
+#include <sockio.h>
+
+
+int main(void){return 0;}
+
+Determining if the stricmp exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_41d3a/fast && make  -f CMakeFiles/cmTC_41d3a.dir/build.make CMakeFiles/cmTC_41d3a.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_41d3a.dir/CheckSymbolExists.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_41d3a.dir/CheckSymbolExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:59:19: error: 'stricmp' undeclared (first use in this function)
+   return ((int*)(&stricmp))[argc];
+                   ^
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:59:19: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_41d3a.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_41d3a.dir/CheckSymbolExists.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_41d3a.dir/CheckSymbolExists.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_41d3a/fast' failed
+make: *** [cmTC_41d3a/fast] Error 2
+
+
+File /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdio.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <alloca.h>
+#include <arpa/inet.h>
+#include <arpa/tftp.h>
+#include <assert.h>
+#include <err.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <setjmp.h>
+#include <sgtty.h>
+#include <signal.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <stropts.h>
+#include <termio.h>
+#include <termios.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+#include <stddef.h>
+#include <dlfcn.h>
+#include <malloc.h>
+#include <memory.h>
+#include <netinet/if_ether.h>
+#include <stdint.h>
+#include <sys/utsname.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef stricmp
+  return ((int*)(&stricmp))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the strcmpi exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_622e6/fast && make  -f CMakeFiles/cmTC_622e6.dir/build.make CMakeFiles/cmTC_622e6.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_622e6.dir/CheckSymbolExists.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_622e6.dir/CheckSymbolExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:59:19: error: 'strcmpi' undeclared (first use in this function)
+   return ((int*)(&strcmpi))[argc];
+                   ^
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:59:19: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_622e6.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_622e6.dir/CheckSymbolExists.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_622e6.dir/CheckSymbolExists.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_622e6/fast' failed
+make: *** [cmTC_622e6/fast] Error 2
+
+
+File /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdio.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <alloca.h>
+#include <arpa/inet.h>
+#include <arpa/tftp.h>
+#include <assert.h>
+#include <err.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <setjmp.h>
+#include <sgtty.h>
+#include <signal.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <stropts.h>
+#include <termio.h>
+#include <termios.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+#include <stddef.h>
+#include <dlfcn.h>
+#include <malloc.h>
+#include <memory.h>
+#include <netinet/if_ether.h>
+#include <stdint.h>
+#include <sys/utsname.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef strcmpi
+  return ((int*)(&strcmpi))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the strncmpi exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_4228f/fast && make  -f CMakeFiles/cmTC_4228f.dir/build.make CMakeFiles/cmTC_4228f.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4228f.dir/CheckSymbolExists.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_4228f.dir/CheckSymbolExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:59:19: error: 'strncmpi' undeclared (first use in this function)
+   return ((int*)(&strncmpi))[argc];
+                   ^
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:59:19: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_4228f.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_4228f.dir/CheckSymbolExists.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_4228f.dir/CheckSymbolExists.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_4228f/fast' failed
+make: *** [cmTC_4228f/fast] Error 2
+
+
+File /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdio.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <alloca.h>
+#include <arpa/inet.h>
+#include <arpa/tftp.h>
+#include <assert.h>
+#include <err.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <setjmp.h>
+#include <sgtty.h>
+#include <signal.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <stropts.h>
+#include <termio.h>
+#include <termios.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+#include <stddef.h>
+#include <dlfcn.h>
+#include <malloc.h>
+#include <memory.h>
+#include <netinet/if_ether.h>
+#include <stdint.h>
+#include <sys/utsname.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef strncmpi
+  return ((int*)(&strncmpi))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the inet_ntoa_r exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e44f8/fast && make  -f CMakeFiles/cmTC_e44f8.dir/build.make CMakeFiles/cmTC_e44f8.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e44f8.dir/CheckSymbolExists.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_e44f8.dir/CheckSymbolExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:59:19: error: 'inet_ntoa_r' undeclared (first use in this function)
+   return ((int*)(&inet_ntoa_r))[argc];
+                   ^
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:59:19: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_e44f8.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_e44f8.dir/CheckSymbolExists.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_e44f8.dir/CheckSymbolExists.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_e44f8/fast' failed
+make: *** [cmTC_e44f8/fast] Error 2
+
+
+File /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdio.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <alloca.h>
+#include <arpa/inet.h>
+#include <arpa/tftp.h>
+#include <assert.h>
+#include <err.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <setjmp.h>
+#include <sgtty.h>
+#include <signal.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <stropts.h>
+#include <termio.h>
+#include <termios.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+#include <stddef.h>
+#include <dlfcn.h>
+#include <malloc.h>
+#include <memory.h>
+#include <netinet/if_ether.h>
+#include <stdint.h>
+#include <sys/utsname.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef inet_ntoa_r
+  return ((int*)(&inet_ntoa_r))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the closesocket exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_5dc2c/fast && make  -f CMakeFiles/cmTC_5dc2c.dir/build.make CMakeFiles/cmTC_5dc2c.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5dc2c.dir/CheckSymbolExists.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_5dc2c.dir/CheckSymbolExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:59:19: error: 'closesocket' undeclared (first use in this function)
+   return ((int*)(&closesocket))[argc];
+                   ^
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:59:19: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_5dc2c.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_5dc2c.dir/CheckSymbolExists.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_5dc2c.dir/CheckSymbolExists.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_5dc2c/fast' failed
+make: *** [cmTC_5dc2c/fast] Error 2
+
+
+File /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdio.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <alloca.h>
+#include <arpa/inet.h>
+#include <arpa/tftp.h>
+#include <assert.h>
+#include <err.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <setjmp.h>
+#include <sgtty.h>
+#include <signal.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <stropts.h>
+#include <termio.h>
+#include <termios.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+#include <stddef.h>
+#include <dlfcn.h>
+#include <malloc.h>
+#include <memory.h>
+#include <netinet/if_ether.h>
+#include <stdint.h>
+#include <sys/utsname.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef closesocket
+  return ((int*)(&closesocket))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the getpass_r exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_b3aeb/fast && make  -f CMakeFiles/cmTC_b3aeb.dir/build.make CMakeFiles/cmTC_b3aeb.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b3aeb.dir/CheckSymbolExists.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_b3aeb.dir/CheckSymbolExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:59:19: error: 'getpass_r' undeclared (first use in this function)
+   return ((int*)(&getpass_r))[argc];
+                   ^
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:59:19: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_b3aeb.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_b3aeb.dir/CheckSymbolExists.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_b3aeb.dir/CheckSymbolExists.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_b3aeb/fast' failed
+make: *** [cmTC_b3aeb/fast] Error 2
+
+
+File /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdio.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <alloca.h>
+#include <arpa/inet.h>
+#include <arpa/tftp.h>
+#include <assert.h>
+#include <err.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <setjmp.h>
+#include <sgtty.h>
+#include <signal.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <stropts.h>
+#include <termio.h>
+#include <termios.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+#include <stddef.h>
+#include <dlfcn.h>
+#include <malloc.h>
+#include <memory.h>
+#include <netinet/if_ether.h>
+#include <stdint.h>
+#include <sys/utsname.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef getpass_r
+  return ((int*)(&getpass_r))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the strlcat exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ea1da/fast && make  -f CMakeFiles/cmTC_ea1da.dir/build.make CMakeFiles/cmTC_ea1da.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ea1da.dir/CheckSymbolExists.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_ea1da.dir/CheckSymbolExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:59:19: error: 'strlcat' undeclared (first use in this function)
+   return ((int*)(&strlcat))[argc];
+                   ^
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:59:19: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_ea1da.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_ea1da.dir/CheckSymbolExists.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_ea1da.dir/CheckSymbolExists.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_ea1da/fast' failed
+make: *** [cmTC_ea1da/fast] Error 2
+
+
+File /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdio.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <alloca.h>
+#include <arpa/inet.h>
+#include <arpa/tftp.h>
+#include <assert.h>
+#include <err.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <setjmp.h>
+#include <sgtty.h>
+#include <signal.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <stropts.h>
+#include <termio.h>
+#include <termios.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+#include <stddef.h>
+#include <dlfcn.h>
+#include <malloc.h>
+#include <memory.h>
+#include <netinet/if_ether.h>
+#include <stdint.h>
+#include <sys/utsname.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef strlcat
+  return ((int*)(&strlcat))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the _strtoi64 exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_9becc/fast && make  -f CMakeFiles/cmTC_9becc.dir/build.make CMakeFiles/cmTC_9becc.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9becc.dir/CheckSymbolExists.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_9becc.dir/CheckSymbolExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:59:19: error: '_strtoi64' undeclared (first use in this function)
+   return ((int*)(&_strtoi64))[argc];
+                   ^
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:59:19: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_9becc.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_9becc.dir/CheckSymbolExists.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_9becc.dir/CheckSymbolExists.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_9becc/fast' failed
+make: *** [cmTC_9becc/fast] Error 2
+
+
+File /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdio.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <alloca.h>
+#include <arpa/inet.h>
+#include <arpa/tftp.h>
+#include <assert.h>
+#include <err.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <setjmp.h>
+#include <sgtty.h>
+#include <signal.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <stropts.h>
+#include <termio.h>
+#include <termios.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+#include <stddef.h>
+#include <dlfcn.h>
+#include <malloc.h>
+#include <memory.h>
+#include <netinet/if_ether.h>
+#include <stdint.h>
+#include <sys/utsname.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef _strtoi64
+  return ((int*)(&_strtoi64))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the setmode exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_98395/fast && make  -f CMakeFiles/cmTC_98395.dir/build.make CMakeFiles/cmTC_98395.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_98395.dir/CheckSymbolExists.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_98395.dir/CheckSymbolExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:59:19: error: 'setmode' undeclared (first use in this function)
+   return ((int*)(&setmode))[argc];
+                   ^
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:59:19: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_98395.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_98395.dir/CheckSymbolExists.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_98395.dir/CheckSymbolExists.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_98395/fast' failed
+make: *** [cmTC_98395/fast] Error 2
+
+
+File /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdio.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <alloca.h>
+#include <arpa/inet.h>
+#include <arpa/tftp.h>
+#include <assert.h>
+#include <err.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <setjmp.h>
+#include <sgtty.h>
+#include <signal.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <stropts.h>
+#include <termio.h>
+#include <termios.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+#include <stddef.h>
+#include <dlfcn.h>
+#include <malloc.h>
+#include <memory.h>
+#include <netinet/if_ether.h>
+#include <stdint.h>
+#include <sys/utsname.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef setmode
+  return ((int*)(&setmode))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the function mach_absolute_time exists failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_3dc28/fast && make  -f CMakeFiles/cmTC_3dc28.dir/build.make CMakeFiles/cmTC_3dc28.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3dc28.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -w -DCHECK_FUNCTION_EXISTS=mach_absolute_time -std=gnu11 -o CMakeFiles/cmTC_3dc28.dir/CheckFunctionExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_3dc28
+/root/workfiles/cmake/cmake-3.19.5/Bootstrap.cmk/cmake -E cmake_link_script CMakeFiles/cmTC_3dc28.dir/link.txt --verbose=1
+/usr/bin/gcc   -w -DCHECK_FUNCTION_EXISTS=mach_absolute_time CMakeFiles/cmTC_3dc28.dir/CheckFunctionExists.c.o -o cmTC_3dc28 
+CMakeFiles/cmTC_3dc28.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `mach_absolute_time'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_3dc28.dir/build.make:105: recipe for target 'cmTC_3dc28' failed
+make[1]: *** [cmTC_3dc28] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_3dc28/fast' failed
+make: *** [cmTC_3dc28/fast] Error 2
+
+
+
+Performing Curl Test HAVE_FSETXATTR_6 failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_357fa/fast && make  -f CMakeFiles/cmTC_357fa.dir/build.make CMakeFiles/cmTC_357fa.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_357fa.dir/CurlTests.c.o
+/usr/bin/gcc   -w -DHAVE_FSETXATTR_6  -DHAVE_STDIO_H -DHAVE_INTTYPES_H -DHAVE_SYS_IOCTL_H -DHAVE_SYS_PARAM_H -DHAVE_SYS_POLL_H -DHAVE_SYS_RESOURCE_H -DHAVE_SYS_SELECT_H -DHAVE_SYS_SOCKET_H -DHAVE_SYS_STAT_H -DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_SYS_UIO_H -DHAVE_SYS_UN_H -DHAVE_SYS_XATTR_H -DHAVE_ALLOCA_H -DHAVE_ARPA_INET_H -DHAVE_ARPA_TFTP_H -DHAVE_ASSERT_H -DHAVE_ERR_H -DHAVE_ERRNO_H -DHAVE_FCNTL_H -DHAVE_IFADDRS_H -DHAVE_LIBGEN_H -DHAVE_LOCALE_H -DHAVE_NET_IF_H -DHAVE_NETDB_H -DHAVE_NETINET_IN_H -DHAVE_NETINET_TCP_H -DHAVE_POLL_H -DHAVE_PWD_H -DHAVE_SETJMP_H -DHAVE_SGTTY_H -DHAVE_SIGNAL_H -DHAVE_STDBOOL_H -DHAVE_STDINT_H -DHAVE_STDIO_H -DHAVE_STDLIB_H -DHAVE_STRING_H -DHAVE_STRINGS_H -DHAVE_STROPTS_H -DHAVE_TERMIO_H -DHAVE_TERMIOS_H -DHAVE_TIME_H -DHAVE_UNISTD_H -DHAVE_UTIME_H -DHAVE_STDDEF_H -DHAVE_DLFCN_H -DHAVE_MALLOC_H -DHAVE_MEMORY_H -DHAVE_NETINET_IF_ETHER_H -DHAVE_STDINT_H -DHAVE_SYS_UTSNAME_H -std=gnu11 -o CMakeFiles/cmTC_357fa.dir/CurlTests.c.o -c /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:544:3: error: too many arguments to function 'fsetxattr'
+   fsetxattr(0, 0, 0, 0, 0, 0);
+   ^
+In file included from /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:541:0:
+/usr/include/aarch64-linux-gnu/sys/xattr.h:54:12: note: declared here
+ extern int fsetxattr (int __fd, const char *__name, const void *__value,
+            ^
+CMakeFiles/cmTC_357fa.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_357fa.dir/CurlTests.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_357fa.dir/CurlTests.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_357fa/fast' failed
+make: *** [cmTC_357fa/fast] Error 2
+
+
+Performing Curl Test HAVE_IOCTLSOCKET failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_14648/fast && make  -f CMakeFiles/cmTC_14648.dir/build.make CMakeFiles/cmTC_14648.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_14648.dir/CurlTests.c.o
+/usr/bin/gcc   -w -DHAVE_IOCTLSOCKET  -DHAVE_STDIO_H -DHAVE_INTTYPES_H -DHAVE_SYS_IOCTL_H -DHAVE_SYS_PARAM_H -DHAVE_SYS_POLL_H -DHAVE_SYS_RESOURCE_H -DHAVE_SYS_SELECT_H -DHAVE_SYS_SOCKET_H -DHAVE_SYS_STAT_H -DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_SYS_UIO_H -DHAVE_SYS_UN_H -DHAVE_SYS_XATTR_H -DHAVE_ALLOCA_H -DHAVE_ARPA_INET_H -DHAVE_ARPA_TFTP_H -DHAVE_ASSERT_H -DHAVE_ERR_H -DHAVE_ERRNO_H -DHAVE_FCNTL_H -DHAVE_IFADDRS_H -DHAVE_LIBGEN_H -DHAVE_LOCALE_H -DHAVE_NET_IF_H -DHAVE_NETDB_H -DHAVE_NETINET_IN_H -DHAVE_NETINET_TCP_H -DHAVE_POLL_H -DHAVE_PWD_H -DHAVE_SETJMP_H -DHAVE_SGTTY_H -DHAVE_SIGNAL_H -DHAVE_STDBOOL_H -DHAVE_STDINT_H -DHAVE_STDIO_H -DHAVE_STDLIB_H -DHAVE_STRING_H -DHAVE_STRINGS_H -DHAVE_STROPTS_H -DHAVE_TERMIO_H -DHAVE_TERMIOS_H -DHAVE_TIME_H -DHAVE_UNISTD_H -DHAVE_UTIME_H -DHAVE_STDDEF_H -DHAVE_DLFCN_H -DHAVE_MALLOC_H -DHAVE_MEMORY_H -DHAVE_NETINET_IF_ETHER_H -DHAVE_STDINT_H -DHAVE_SYS_UTSNAME_H -std=gnu11 -o CMakeFiles/cmTC_14648.dir/CurlTests.c.o -c /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:326:44: error: 'FIONBIO' undeclared (first use in this function)
+  unsigned long flags = ioctlsocket(socket, FIONBIO, &flags);
+                                            ^
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:326:44: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_14648.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_14648.dir/CurlTests.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_14648.dir/CurlTests.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_14648/fast' failed
+make: *** [cmTC_14648/fast] Error 2
+
+
+Performing Curl Test HAVE_IOCTLSOCKET_CAMEL failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_49142/fast && make  -f CMakeFiles/cmTC_49142.dir/build.make CMakeFiles/cmTC_49142.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_49142.dir/CurlTests.c.o
+/usr/bin/gcc   -w -DHAVE_IOCTLSOCKET_CAMEL  -DHAVE_STDIO_H -DHAVE_INTTYPES_H -DHAVE_SYS_IOCTL_H -DHAVE_SYS_PARAM_H -DHAVE_SYS_POLL_H -DHAVE_SYS_RESOURCE_H -DHAVE_SYS_SELECT_H -DHAVE_SYS_SOCKET_H -DHAVE_SYS_STAT_H -DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_SYS_UIO_H -DHAVE_SYS_UN_H -DHAVE_SYS_XATTR_H -DHAVE_ALLOCA_H -DHAVE_ARPA_INET_H -DHAVE_ARPA_TFTP_H -DHAVE_ASSERT_H -DHAVE_ERR_H -DHAVE_ERRNO_H -DHAVE_FCNTL_H -DHAVE_IFADDRS_H -DHAVE_LIBGEN_H -DHAVE_LOCALE_H -DHAVE_NET_IF_H -DHAVE_NETDB_H -DHAVE_NETINET_IN_H -DHAVE_NETINET_TCP_H -DHAVE_POLL_H -DHAVE_PWD_H -DHAVE_SETJMP_H -DHAVE_SGTTY_H -DHAVE_SIGNAL_H -DHAVE_STDBOOL_H -DHAVE_STDINT_H -DHAVE_STDIO_H -DHAVE_STDLIB_H -DHAVE_STRING_H -DHAVE_STRINGS_H -DHAVE_STROPTS_H -DHAVE_TERMIO_H -DHAVE_TERMIOS_H -DHAVE_TIME_H -DHAVE_UNISTD_H -DHAVE_UTIME_H -DHAVE_STDDEF_H -DHAVE_DLFCN_H -DHAVE_MALLOC_H -DHAVE_MEMORY_H -DHAVE_NETINET_IF_ETHER_H -DHAVE_STDINT_H -DHAVE_SYS_UTSNAME_H -std=gnu11 -o CMakeFiles/cmTC_49142.dir/CurlTests.c.o -c /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c
+Linking C executable cmTC_49142
+/root/workfiles/cmake/cmake-3.19.5/Bootstrap.cmk/cmake -E cmake_link_script CMakeFiles/cmTC_49142.dir/link.txt --verbose=1
+/usr/bin/gcc   -w -DHAVE_IOCTLSOCKET_CAMEL  -DHAVE_STDIO_H -DHAVE_INTTYPES_H -DHAVE_SYS_IOCTL_H -DHAVE_SYS_PARAM_H -DHAVE_SYS_POLL_H -DHAVE_SYS_RESOURCE_H -DHAVE_SYS_SELECT_H -DHAVE_SYS_SOCKET_H -DHAVE_SYS_STAT_H -DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_SYS_UIO_H -DHAVE_SYS_UN_H -DHAVE_SYS_XATTR_H -DHAVE_ALLOCA_H -DHAVE_ARPA_INET_H -DHAVE_ARPA_TFTP_H -DHAVE_ASSERT_H -DHAVE_ERR_H -DHAVE_ERRNO_H -DHAVE_FCNTL_H -DHAVE_IFADDRS_H -DHAVE_LIBGEN_H -DHAVE_LOCALE_H -DHAVE_NET_IF_H -DHAVE_NETDB_H -DHAVE_NETINET_IN_H -DHAVE_NETINET_TCP_H -DHAVE_POLL_H -DHAVE_PWD_H -DHAVE_SETJMP_H -DHAVE_SGTTY_H -DHAVE_SIGNAL_H -DHAVE_STDBOOL_H -DHAVE_STDINT_H -DHAVE_STDIO_H -DHAVE_STDLIB_H -DHAVE_STRING_H -DHAVE_STRINGS_H -DHAVE_STROPTS_H -DHAVE_TERMIO_H -DHAVE_TERMIOS_H -DHAVE_TIME_H -DHAVE_UNISTD_H -DHAVE_UTIME_H -DHAVE_STDDEF_H -DHAVE_DLFCN_H -DHAVE_MALLOC_H -DHAVE_MEMORY_H -DHAVE_NETINET_IF_ETHER_H -DHAVE_STDINT_H -DHAVE_SYS_UTSNAME_H CMakeFiles/cmTC_49142.dir/CurlTests.c.o -o cmTC_49142 
+CMakeFiles/cmTC_49142.dir/CurlTests.c.o: In function `main':
+CurlTests.c:(.text+0x14): undefined reference to `IoctlSocket'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_49142.dir/build.make:105: recipe for target 'cmTC_49142' failed
+make[1]: *** [cmTC_49142] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_49142/fast' failed
+make: *** [cmTC_49142/fast] Error 2
+
+
+Performing Curl Test HAVE_IOCTLSOCKET_CAMEL_FIONBIO failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_a02cf/fast && make  -f CMakeFiles/cmTC_a02cf.dir/build.make CMakeFiles/cmTC_a02cf.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a02cf.dir/CurlTests.c.o
+/usr/bin/gcc   -w -DHAVE_IOCTLSOCKET_CAMEL_FIONBIO  -DHAVE_STDIO_H -DHAVE_INTTYPES_H -DHAVE_SYS_IOCTL_H -DHAVE_SYS_PARAM_H -DHAVE_SYS_POLL_H -DHAVE_SYS_RESOURCE_H -DHAVE_SYS_SELECT_H -DHAVE_SYS_SOCKET_H -DHAVE_SYS_STAT_H -DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_SYS_UIO_H -DHAVE_SYS_UN_H -DHAVE_SYS_XATTR_H -DHAVE_ALLOCA_H -DHAVE_ARPA_INET_H -DHAVE_ARPA_TFTP_H -DHAVE_ASSERT_H -DHAVE_ERR_H -DHAVE_ERRNO_H -DHAVE_FCNTL_H -DHAVE_IFADDRS_H -DHAVE_LIBGEN_H -DHAVE_LOCALE_H -DHAVE_NET_IF_H -DHAVE_NETDB_H -DHAVE_NETINET_IN_H -DHAVE_NETINET_TCP_H -DHAVE_POLL_H -DHAVE_PWD_H -DHAVE_SETJMP_H -DHAVE_SGTTY_H -DHAVE_SIGNAL_H -DHAVE_STDBOOL_H -DHAVE_STDINT_H -DHAVE_STDIO_H -DHAVE_STDLIB_H -DHAVE_STRING_H -DHAVE_STRINGS_H -DHAVE_STROPTS_H -DHAVE_TERMIO_H -DHAVE_TERMIOS_H -DHAVE_TIME_H -DHAVE_UNISTD_H -DHAVE_UTIME_H -DHAVE_STDDEF_H -DHAVE_DLFCN_H -DHAVE_MALLOC_H -DHAVE_MEMORY_H -DHAVE_NETINET_IF_ETHER_H -DHAVE_STDINT_H -DHAVE_SYS_UTSNAME_H -std=gnu11 -o CMakeFiles/cmTC_a02cf.dir/CurlTests.c.o -c /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:382:32: error: 'FIONBIO' undeclared (first use in this function)
+         if(0 != ioctlsocket(0, FIONBIO, &flags))
+                                ^
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:382:32: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_a02cf.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_a02cf.dir/CurlTests.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_a02cf.dir/CurlTests.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_a02cf/fast' failed
+make: *** [cmTC_a02cf/fast] Error 2
+
+
+Performing Curl Test HAVE_IOCTLSOCKET_FIONBIO failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_6dc27/fast && make  -f CMakeFiles/cmTC_6dc27.dir/build.make CMakeFiles/cmTC_6dc27.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6dc27.dir/CurlTests.c.o
+/usr/bin/gcc   -w -DHAVE_IOCTLSOCKET_FIONBIO  -DHAVE_STDIO_H -DHAVE_INTTYPES_H -DHAVE_SYS_IOCTL_H -DHAVE_SYS_PARAM_H -DHAVE_SYS_POLL_H -DHAVE_SYS_RESOURCE_H -DHAVE_SYS_SELECT_H -DHAVE_SYS_SOCKET_H -DHAVE_SYS_STAT_H -DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_SYS_UIO_H -DHAVE_SYS_UN_H -DHAVE_SYS_XATTR_H -DHAVE_ALLOCA_H -DHAVE_ARPA_INET_H -DHAVE_ARPA_TFTP_H -DHAVE_ASSERT_H -DHAVE_ERR_H -DHAVE_ERRNO_H -DHAVE_FCNTL_H -DHAVE_IFADDRS_H -DHAVE_LIBGEN_H -DHAVE_LOCALE_H -DHAVE_NET_IF_H -DHAVE_NETDB_H -DHAVE_NETINET_IN_H -DHAVE_NETINET_TCP_H -DHAVE_POLL_H -DHAVE_PWD_H -DHAVE_SETJMP_H -DHAVE_SGTTY_H -DHAVE_SIGNAL_H -DHAVE_STDBOOL_H -DHAVE_STDINT_H -DHAVE_STDIO_H -DHAVE_STDLIB_H -DHAVE_STRING_H -DHAVE_STRINGS_H -DHAVE_STROPTS_H -DHAVE_TERMIO_H -DHAVE_TERMIOS_H -DHAVE_TIME_H -DHAVE_UNISTD_H -DHAVE_UTIME_H -DHAVE_STDDEF_H -DHAVE_DLFCN_H -DHAVE_MALLOC_H -DHAVE_MEMORY_H -DHAVE_NETINET_IF_ETHER_H -DHAVE_STDINT_H -DHAVE_SYS_UTSNAME_H -std=gnu11 -o CMakeFiles/cmTC_6dc27.dir/CurlTests.c.o -c /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:409:32: error: 'FIONBIO' undeclared (first use in this function)
+         if(0 != ioctlsocket(0, FIONBIO, &flags))
+                                ^
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:409:32: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_6dc27.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_6dc27.dir/CurlTests.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_6dc27.dir/CurlTests.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_6dc27/fast' failed
+make: *** [cmTC_6dc27/fast] Error 2
+
+
+Performing Curl Test HAVE_SETSOCKOPT_SO_NONBLOCK failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_f0349/fast && make  -f CMakeFiles/cmTC_f0349.dir/build.make CMakeFiles/cmTC_f0349.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f0349.dir/CurlTests.c.o
+/usr/bin/gcc   -w -DHAVE_SETSOCKOPT_SO_NONBLOCK  -DHAVE_STDIO_H -DHAVE_INTTYPES_H -DHAVE_SYS_IOCTL_H -DHAVE_SYS_PARAM_H -DHAVE_SYS_POLL_H -DHAVE_SYS_RESOURCE_H -DHAVE_SYS_SELECT_H -DHAVE_SYS_SOCKET_H -DHAVE_SYS_STAT_H -DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_SYS_UIO_H -DHAVE_SYS_UN_H -DHAVE_SYS_XATTR_H -DHAVE_ALLOCA_H -DHAVE_ARPA_INET_H -DHAVE_ARPA_TFTP_H -DHAVE_ASSERT_H -DHAVE_ERR_H -DHAVE_ERRNO_H -DHAVE_FCNTL_H -DHAVE_IFADDRS_H -DHAVE_LIBGEN_H -DHAVE_LOCALE_H -DHAVE_NET_IF_H -DHAVE_NETDB_H -DHAVE_NETINET_IN_H -DHAVE_NETINET_TCP_H -DHAVE_POLL_H -DHAVE_PWD_H -DHAVE_SETJMP_H -DHAVE_SGTTY_H -DHAVE_SIGNAL_H -DHAVE_STDBOOL_H -DHAVE_STDINT_H -DHAVE_STDIO_H -DHAVE_STDLIB_H -DHAVE_STRING_H -DHAVE_STRINGS_H -DHAVE_STROPTS_H -DHAVE_TERMIO_H -DHAVE_TERMIOS_H -DHAVE_TIME_H -DHAVE_UNISTD_H -DHAVE_UTIME_H -DHAVE_STDDEF_H -DHAVE_DLFCN_H -DHAVE_MALLOC_H -DHAVE_MEMORY_H -DHAVE_NETINET_IF_ETHER_H -DHAVE_STDINT_H -DHAVE_SYS_UTSNAME_H -std=gnu11 -o CMakeFiles/cmTC_f0349.dir/CurlTests.c.o -c /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:505:43: error: 'SO_NONBLOCK' undeclared (first use in this function)
+         if(0 != setsockopt(0, SOL_SOCKET, SO_NONBLOCK, 0, 0))
+                                           ^
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:505:43: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_f0349.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_f0349.dir/CurlTests.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_f0349.dir/CurlTests.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_f0349/fast' failed
+make: *** [cmTC_f0349/fast] Error 2
+
+
+Performing Curl Test HAVE_O_NONBLOCK failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_c95f1/fast && make  -f CMakeFiles/cmTC_c95f1.dir/build.make CMakeFiles/cmTC_c95f1.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c95f1.dir/CurlTests.c.o
+/usr/bin/gcc   -w -DHAVE_O_NONBLOCK  -DHAVE_STDIO_H -DHAVE_INTTYPES_H -DHAVE_SYS_IOCTL_H -DHAVE_SYS_PARAM_H -DHAVE_SYS_POLL_H -DHAVE_SYS_RESOURCE_H -DHAVE_SYS_SELECT_H -DHAVE_SYS_SOCKET_H -DHAVE_SYS_STAT_H -DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_SYS_UIO_H -DHAVE_SYS_UN_H -DHAVE_SYS_XATTR_H -DHAVE_ALLOCA_H -DHAVE_ARPA_INET_H -DHAVE_ARPA_TFTP_H -DHAVE_ASSERT_H -DHAVE_ERR_H -DHAVE_ERRNO_H -DHAVE_FCNTL_H -DHAVE_IFADDRS_H -DHAVE_LIBGEN_H -DHAVE_LOCALE_H -DHAVE_NET_IF_H -DHAVE_NETDB_H -DHAVE_NETINET_IN_H -DHAVE_NETINET_TCP_H -DHAVE_POLL_H -DHAVE_PWD_H -DHAVE_SETJMP_H -DHAVE_SGTTY_H -DHAVE_SIGNAL_H -DHAVE_STDBOOL_H -DHAVE_STDINT_H -DHAVE_STDIO_H -DHAVE_STDLIB_H -DHAVE_STRING_H -DHAVE_STRINGS_H -DHAVE_STROPTS_H -DHAVE_TERMIO_H -DHAVE_TERMIOS_H -DHAVE_TIME_H -DHAVE_UNISTD_H -DHAVE_UTIME_H -DHAVE_STDDEF_H -DHAVE_DLFCN_H -DHAVE_MALLOC_H -DHAVE_MEMORY_H -DHAVE_NETINET_IF_ETHER_H -DHAVE_STDINT_H -DHAVE_SYS_UTSNAME_H -std=gnu11 -o CMakeFiles/cmTC_c95f1.dir/CurlTests.c.o -c /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c
+Linking C executable cmTC_c95f1
+/root/workfiles/cmake/cmake-3.19.5/Bootstrap.cmk/cmake -E cmake_link_script CMakeFiles/cmTC_c95f1.dir/link.txt --verbose=1
+/usr/bin/gcc   -w -DHAVE_O_NONBLOCK  -DHAVE_STDIO_H -DHAVE_INTTYPES_H -DHAVE_SYS_IOCTL_H -DHAVE_SYS_PARAM_H -DHAVE_SYS_POLL_H -DHAVE_SYS_RESOURCE_H -DHAVE_SYS_SELECT_H -DHAVE_SYS_SOCKET_H -DHAVE_SYS_STAT_H -DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_SYS_UIO_H -DHAVE_SYS_UN_H -DHAVE_SYS_XATTR_H -DHAVE_ALLOCA_H -DHAVE_ARPA_INET_H -DHAVE_ARPA_TFTP_H -DHAVE_ASSERT_H -DHAVE_ERR_H -DHAVE_ERRNO_H -DHAVE_FCNTL_H -DHAVE_IFADDRS_H -DHAVE_LIBGEN_H -DHAVE_LOCALE_H -DHAVE_NET_IF_H -DHAVE_NETDB_H -DHAVE_NETINET_IN_H -DHAVE_NETINET_TCP_H -DHAVE_POLL_H -DHAVE_PWD_H -DHAVE_SETJMP_H -DHAVE_SGTTY_H -DHAVE_SIGNAL_H -DHAVE_STDBOOL_H -DHAVE_STDINT_H -DHAVE_STDIO_H -DHAVE_STDLIB_H -DHAVE_STRING_H -DHAVE_STRINGS_H -DHAVE_STROPTS_H -DHAVE_TERMIO_H -DHAVE_TERMIOS_H -DHAVE_TIME_H -DHAVE_UNISTD_H -DHAVE_UTIME_H -DHAVE_STDDEF_H -DHAVE_DLFCN_H -DHAVE_MALLOC_H -DHAVE_MEMORY_H -DHAVE_NETINET_IF_ETHER_H -DHAVE_STDINT_H -DHAVE_SYS_UTSNAME_H CMakeFiles/cmTC_c95f1.dir/CurlTests.c.o -o cmTC_c95f1 
+/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crt1.o: In function `_start':
+(.text+0x30): undefined reference to `main'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_c95f1.dir/build.make:105: recipe for target 'cmTC_c95f1' failed
+make[1]: *** [cmTC_c95f1] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_c95f1/fast' failed
+make: *** [cmTC_c95f1/fast] Error 2
+
+
+Performing Curl Test HAVE_GETHOSTBYADDR_R_5 failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_89112/fast && make  -f CMakeFiles/cmTC_89112.dir/build.make CMakeFiles/cmTC_89112.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_89112.dir/CurlTests.c.o
+/usr/bin/gcc   -w -DHAVE_GETHOSTBYADDR_R_5  -DHAVE_STDIO_H -DHAVE_INTTYPES_H -DHAVE_SYS_IOCTL_H -DHAVE_SYS_PARAM_H -DHAVE_SYS_POLL_H -DHAVE_SYS_RESOURCE_H -DHAVE_SYS_SELECT_H -DHAVE_SYS_SOCKET_H -DHAVE_SYS_STAT_H -DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_SYS_UIO_H -DHAVE_SYS_UN_H -DHAVE_SYS_XATTR_H -DHAVE_ALLOCA_H -DHAVE_ARPA_INET_H -DHAVE_ARPA_TFTP_H -DHAVE_ASSERT_H -DHAVE_ERR_H -DHAVE_ERRNO_H -DHAVE_FCNTL_H -DHAVE_IFADDRS_H -DHAVE_LIBGEN_H -DHAVE_LOCALE_H -DHAVE_NET_IF_H -DHAVE_NETDB_H -DHAVE_NETINET_IN_H -DHAVE_NETINET_TCP_H -DHAVE_POLL_H -DHAVE_PWD_H -DHAVE_SETJMP_H -DHAVE_SGTTY_H -DHAVE_SIGNAL_H -DHAVE_STDBOOL_H -DHAVE_STDINT_H -DHAVE_STDIO_H -DHAVE_STDLIB_H -DHAVE_STRING_H -DHAVE_STRINGS_H -DHAVE_STROPTS_H -DHAVE_TERMIO_H -DHAVE_TERMIOS_H -DHAVE_TIME_H -DHAVE_UNISTD_H -DHAVE_UTIME_H -DHAVE_STDDEF_H -DHAVE_DLFCN_H -DHAVE_MALLOC_H -DHAVE_MEMORY_H -DHAVE_NETINET_IF_ETHER_H -DHAVE_STDINT_H -DHAVE_SYS_UTSNAME_H -std=gnu11 -o CMakeFiles/cmTC_89112.dir/CurlTests.c.o -c /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:106:23: error: storage size of 'hdata' isn't known
+   struct hostent_data hdata;
+                       ^
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:127:8: error: too few arguments to function 'gethostbyaddr_r'
+   rc = gethostbyaddr_r(address, length, type, &h, &hdata);
+        ^
+In file included from /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:93:0:
+/usr/include/netdb.h:172:12: note: declared here
+ extern int gethostbyaddr_r (const void *__restrict __addr, __socklen_t __len,
+            ^
+CMakeFiles/cmTC_89112.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_89112.dir/CurlTests.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_89112.dir/CurlTests.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_89112/fast' failed
+make: *** [cmTC_89112/fast] Error 2
+
+
+Performing Curl Test HAVE_GETHOSTBYADDR_R_7 failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_5f9c0/fast && make  -f CMakeFiles/cmTC_5f9c0.dir/build.make CMakeFiles/cmTC_5f9c0.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5f9c0.dir/CurlTests.c.o
+/usr/bin/gcc   -w -DHAVE_GETHOSTBYADDR_R_7  -DHAVE_STDIO_H -DHAVE_INTTYPES_H -DHAVE_SYS_IOCTL_H -DHAVE_SYS_PARAM_H -DHAVE_SYS_POLL_H -DHAVE_SYS_RESOURCE_H -DHAVE_SYS_SELECT_H -DHAVE_SYS_SOCKET_H -DHAVE_SYS_STAT_H -DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_SYS_UIO_H -DHAVE_SYS_UN_H -DHAVE_SYS_XATTR_H -DHAVE_ALLOCA_H -DHAVE_ARPA_INET_H -DHAVE_ARPA_TFTP_H -DHAVE_ASSERT_H -DHAVE_ERR_H -DHAVE_ERRNO_H -DHAVE_FCNTL_H -DHAVE_IFADDRS_H -DHAVE_LIBGEN_H -DHAVE_LOCALE_H -DHAVE_NET_IF_H -DHAVE_NETDB_H -DHAVE_NETINET_IN_H -DHAVE_NETINET_TCP_H -DHAVE_POLL_H -DHAVE_PWD_H -DHAVE_SETJMP_H -DHAVE_SGTTY_H -DHAVE_SIGNAL_H -DHAVE_STDBOOL_H -DHAVE_STDINT_H -DHAVE_STDIO_H -DHAVE_STDLIB_H -DHAVE_STRING_H -DHAVE_STRINGS_H -DHAVE_STROPTS_H -DHAVE_TERMIO_H -DHAVE_TERMIOS_H -DHAVE_TIME_H -DHAVE_UNISTD_H -DHAVE_UTIME_H -DHAVE_STDDEF_H -DHAVE_DLFCN_H -DHAVE_MALLOC_H -DHAVE_MEMORY_H -DHAVE_NETINET_IF_ETHER_H -DHAVE_STDINT_H -DHAVE_SYS_UTSNAME_H -std=gnu11 -o CMakeFiles/cmTC_5f9c0.dir/CurlTests.c.o -c /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:131:8: error: too few arguments to function 'gethostbyaddr_r'
+   hp = gethostbyaddr_r(address, length, type, &h, buffer, 8192, &h_errnop);
+        ^
+In file included from /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:93:0:
+/usr/include/netdb.h:172:12: note: declared here
+ extern int gethostbyaddr_r (const void *__restrict __addr, __socklen_t __len,
+            ^
+CMakeFiles/cmTC_5f9c0.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_5f9c0.dir/CurlTests.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_5f9c0.dir/CurlTests.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_5f9c0/fast' failed
+make: *** [cmTC_5f9c0/fast] Error 2
+
+
+Performing Curl Test HAVE_GETHOSTBYADDR_R_5_REENTRANT failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_1aa1e/fast && make  -f CMakeFiles/cmTC_1aa1e.dir/build.make CMakeFiles/cmTC_1aa1e.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1aa1e.dir/CurlTests.c.o
+/usr/bin/gcc   -w -DHAVE_GETHOSTBYADDR_R_5_REENTRANT  -DHAVE_STDIO_H -DHAVE_INTTYPES_H -DHAVE_SYS_IOCTL_H -DHAVE_SYS_PARAM_H -DHAVE_SYS_POLL_H -DHAVE_SYS_RESOURCE_H -DHAVE_SYS_SELECT_H -DHAVE_SYS_SOCKET_H -DHAVE_SYS_STAT_H -DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_SYS_UIO_H -DHAVE_SYS_UN_H -DHAVE_SYS_XATTR_H -DHAVE_ALLOCA_H -DHAVE_ARPA_INET_H -DHAVE_ARPA_TFTP_H -DHAVE_ASSERT_H -DHAVE_ERR_H -DHAVE_ERRNO_H -DHAVE_FCNTL_H -DHAVE_IFADDRS_H -DHAVE_LIBGEN_H -DHAVE_LOCALE_H -DHAVE_NET_IF_H -DHAVE_NETDB_H -DHAVE_NETINET_IN_H -DHAVE_NETINET_TCP_H -DHAVE_POLL_H -DHAVE_PWD_H -DHAVE_SETJMP_H -DHAVE_SGTTY_H -DHAVE_SIGNAL_H -DHAVE_STDBOOL_H -DHAVE_STDINT_H -DHAVE_STDIO_H -DHAVE_STDLIB_H -DHAVE_STRING_H -DHAVE_STRINGS_H -DHAVE_STROPTS_H -DHAVE_TERMIO_H -DHAVE_TERMIOS_H -DHAVE_TIME_H -DHAVE_UNISTD_H -DHAVE_UTIME_H -DHAVE_STDDEF_H -DHAVE_DLFCN_H -DHAVE_MALLOC_H -DHAVE_MEMORY_H -DHAVE_NETINET_IF_ETHER_H -DHAVE_STDINT_H -DHAVE_SYS_UTSNAME_H -std=gnu11 -o CMakeFiles/cmTC_1aa1e.dir/CurlTests.c.o -c /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:106:23: error: storage size of 'hdata' isn't known
+   struct hostent_data hdata;
+                       ^
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:127:8: error: too few arguments to function 'gethostbyaddr_r'
+   rc = gethostbyaddr_r(address, length, type, &h, &hdata);
+        ^
+In file included from /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:93:0:
+/usr/include/netdb.h:172:12: note: declared here
+ extern int gethostbyaddr_r (const void *__restrict __addr, __socklen_t __len,
+            ^
+CMakeFiles/cmTC_1aa1e.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_1aa1e.dir/CurlTests.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_1aa1e.dir/CurlTests.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_1aa1e/fast' failed
+make: *** [cmTC_1aa1e/fast] Error 2
+
+
+Performing Curl Test HAVE_GETHOSTBYADDR_R_7_REENTRANT failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_6b965/fast && make  -f CMakeFiles/cmTC_6b965.dir/build.make CMakeFiles/cmTC_6b965.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6b965.dir/CurlTests.c.o
+/usr/bin/gcc   -w -DHAVE_GETHOSTBYADDR_R_7_REENTRANT  -DHAVE_STDIO_H -DHAVE_INTTYPES_H -DHAVE_SYS_IOCTL_H -DHAVE_SYS_PARAM_H -DHAVE_SYS_POLL_H -DHAVE_SYS_RESOURCE_H -DHAVE_SYS_SELECT_H -DHAVE_SYS_SOCKET_H -DHAVE_SYS_STAT_H -DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_SYS_UIO_H -DHAVE_SYS_UN_H -DHAVE_SYS_XATTR_H -DHAVE_ALLOCA_H -DHAVE_ARPA_INET_H -DHAVE_ARPA_TFTP_H -DHAVE_ASSERT_H -DHAVE_ERR_H -DHAVE_ERRNO_H -DHAVE_FCNTL_H -DHAVE_IFADDRS_H -DHAVE_LIBGEN_H -DHAVE_LOCALE_H -DHAVE_NET_IF_H -DHAVE_NETDB_H -DHAVE_NETINET_IN_H -DHAVE_NETINET_TCP_H -DHAVE_POLL_H -DHAVE_PWD_H -DHAVE_SETJMP_H -DHAVE_SGTTY_H -DHAVE_SIGNAL_H -DHAVE_STDBOOL_H -DHAVE_STDINT_H -DHAVE_STDIO_H -DHAVE_STDLIB_H -DHAVE_STRING_H -DHAVE_STRINGS_H -DHAVE_STROPTS_H -DHAVE_TERMIO_H -DHAVE_TERMIOS_H -DHAVE_TIME_H -DHAVE_UNISTD_H -DHAVE_UTIME_H -DHAVE_STDDEF_H -DHAVE_DLFCN_H -DHAVE_MALLOC_H -DHAVE_MEMORY_H -DHAVE_NETINET_IF_ETHER_H -DHAVE_STDINT_H -DHAVE_SYS_UTSNAME_H -std=gnu11 -o CMakeFiles/cmTC_6b965.dir/CurlTests.c.o -c /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:131:8: error: too few arguments to function 'gethostbyaddr_r'
+   hp = gethostbyaddr_r(address, length, type, &h, buffer, 8192, &h_errnop);
+        ^
+In file included from /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:93:0:
+/usr/include/netdb.h:172:12: note: declared here
+ extern int gethostbyaddr_r (const void *__restrict __addr, __socklen_t __len,
+            ^
+CMakeFiles/cmTC_6b965.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_6b965.dir/CurlTests.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_6b965.dir/CurlTests.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_6b965/fast' failed
+make: *** [cmTC_6b965/fast] Error 2
+
+
+Performing Curl Test HAVE_GETHOSTBYNAME_R_3 failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_8c178/fast && make  -f CMakeFiles/cmTC_8c178.dir/build.make CMakeFiles/cmTC_8c178.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8c178.dir/CurlTests.c.o
+/usr/bin/gcc   -w -DHAVE_GETHOSTBYNAME_R_3  -DHAVE_STDIO_H -DHAVE_INTTYPES_H -DHAVE_SYS_IOCTL_H -DHAVE_SYS_PARAM_H -DHAVE_SYS_POLL_H -DHAVE_SYS_RESOURCE_H -DHAVE_SYS_SELECT_H -DHAVE_SYS_SOCKET_H -DHAVE_SYS_STAT_H -DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_SYS_UIO_H -DHAVE_SYS_UN_H -DHAVE_SYS_XATTR_H -DHAVE_ALLOCA_H -DHAVE_ARPA_INET_H -DHAVE_ARPA_TFTP_H -DHAVE_ASSERT_H -DHAVE_ERR_H -DHAVE_ERRNO_H -DHAVE_FCNTL_H -DHAVE_IFADDRS_H -DHAVE_LIBGEN_H -DHAVE_LOCALE_H -DHAVE_NET_IF_H -DHAVE_NETDB_H -DHAVE_NETINET_IN_H -DHAVE_NETINET_TCP_H -DHAVE_POLL_H -DHAVE_PWD_H -DHAVE_SETJMP_H -DHAVE_SGTTY_H -DHAVE_SIGNAL_H -DHAVE_STDBOOL_H -DHAVE_STDINT_H -DHAVE_STDIO_H -DHAVE_STDLIB_H -DHAVE_STRING_H -DHAVE_STRINGS_H -DHAVE_STROPTS_H -DHAVE_TERMIO_H -DHAVE_TERMIOS_H -DHAVE_TIME_H -DHAVE_UNISTD_H -DHAVE_UTIME_H -DHAVE_STDDEF_H -DHAVE_DLFCN_H -DHAVE_MALLOC_H -DHAVE_MEMORY_H -DHAVE_NETINET_IF_ETHER_H -DHAVE_STDINT_H -DHAVE_SYS_UTSNAME_H -std=gnu11 -o CMakeFiles/cmTC_8c178.dir/CurlTests.c.o -c /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:106:23: error: storage size of 'hdata' isn't known
+   struct hostent_data hdata;
+                       ^
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:141:8: error: too few arguments to function 'gethostbyname_r'
+   rc = gethostbyname_r(address, &h, &hdata);
+        ^
+In file included from /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:93:0:
+/usr/include/netdb.h:179:12: note: declared here
+ extern int gethostbyname_r (const char *__restrict __name,
+            ^
+CMakeFiles/cmTC_8c178.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_8c178.dir/CurlTests.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_8c178.dir/CurlTests.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_8c178/fast' failed
+make: *** [cmTC_8c178/fast] Error 2
+
+
+Performing Curl Test HAVE_GETHOSTBYNAME_R_5 failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_f1cf7/fast && make  -f CMakeFiles/cmTC_f1cf7.dir/build.make CMakeFiles/cmTC_f1cf7.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f1cf7.dir/CurlTests.c.o
+/usr/bin/gcc   -w -DHAVE_GETHOSTBYNAME_R_5  -DHAVE_STDIO_H -DHAVE_INTTYPES_H -DHAVE_SYS_IOCTL_H -DHAVE_SYS_PARAM_H -DHAVE_SYS_POLL_H -DHAVE_SYS_RESOURCE_H -DHAVE_SYS_SELECT_H -DHAVE_SYS_SOCKET_H -DHAVE_SYS_STAT_H -DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_SYS_UIO_H -DHAVE_SYS_UN_H -DHAVE_SYS_XATTR_H -DHAVE_ALLOCA_H -DHAVE_ARPA_INET_H -DHAVE_ARPA_TFTP_H -DHAVE_ASSERT_H -DHAVE_ERR_H -DHAVE_ERRNO_H -DHAVE_FCNTL_H -DHAVE_IFADDRS_H -DHAVE_LIBGEN_H -DHAVE_LOCALE_H -DHAVE_NET_IF_H -DHAVE_NETDB_H -DHAVE_NETINET_IN_H -DHAVE_NETINET_TCP_H -DHAVE_POLL_H -DHAVE_PWD_H -DHAVE_SETJMP_H -DHAVE_SGTTY_H -DHAVE_SIGNAL_H -DHAVE_STDBOOL_H -DHAVE_STDINT_H -DHAVE_STDIO_H -DHAVE_STDLIB_H -DHAVE_STRING_H -DHAVE_STRINGS_H -DHAVE_STROPTS_H -DHAVE_TERMIO_H -DHAVE_TERMIOS_H -DHAVE_TIME_H -DHAVE_UNISTD_H -DHAVE_UTIME_H -DHAVE_STDDEF_H -DHAVE_DLFCN_H -DHAVE_MALLOC_H -DHAVE_MEMORY_H -DHAVE_NETINET_IF_ETHER_H -DHAVE_STDINT_H -DHAVE_SYS_UTSNAME_H -std=gnu11 -o CMakeFiles/cmTC_f1cf7.dir/CurlTests.c.o -c /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:144:8: error: too few arguments to function 'gethostbyname_r'
+   rc = gethostbyname_r(address, &h, buffer, 8192, &h_errnop);
+        ^
+In file included from /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:93:0:
+/usr/include/netdb.h:179:12: note: declared here
+ extern int gethostbyname_r (const char *__restrict __name,
+            ^
+CMakeFiles/cmTC_f1cf7.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_f1cf7.dir/CurlTests.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_f1cf7.dir/CurlTests.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_f1cf7/fast' failed
+make: *** [cmTC_f1cf7/fast] Error 2
+
+
+Performing Curl Test HAVE_GETHOSTBYNAME_R_3_REENTRANT failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_4552b/fast && make  -f CMakeFiles/cmTC_4552b.dir/build.make CMakeFiles/cmTC_4552b.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4552b.dir/CurlTests.c.o
+/usr/bin/gcc   -w -DHAVE_GETHOSTBYNAME_R_3_REENTRANT  -DHAVE_STDIO_H -DHAVE_INTTYPES_H -DHAVE_SYS_IOCTL_H -DHAVE_SYS_PARAM_H -DHAVE_SYS_POLL_H -DHAVE_SYS_RESOURCE_H -DHAVE_SYS_SELECT_H -DHAVE_SYS_SOCKET_H -DHAVE_SYS_STAT_H -DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_SYS_UIO_H -DHAVE_SYS_UN_H -DHAVE_SYS_XATTR_H -DHAVE_ALLOCA_H -DHAVE_ARPA_INET_H -DHAVE_ARPA_TFTP_H -DHAVE_ASSERT_H -DHAVE_ERR_H -DHAVE_ERRNO_H -DHAVE_FCNTL_H -DHAVE_IFADDRS_H -DHAVE_LIBGEN_H -DHAVE_LOCALE_H -DHAVE_NET_IF_H -DHAVE_NETDB_H -DHAVE_NETINET_IN_H -DHAVE_NETINET_TCP_H -DHAVE_POLL_H -DHAVE_PWD_H -DHAVE_SETJMP_H -DHAVE_SGTTY_H -DHAVE_SIGNAL_H -DHAVE_STDBOOL_H -DHAVE_STDINT_H -DHAVE_STDIO_H -DHAVE_STDLIB_H -DHAVE_STRING_H -DHAVE_STRINGS_H -DHAVE_STROPTS_H -DHAVE_TERMIO_H -DHAVE_TERMIOS_H -DHAVE_TIME_H -DHAVE_UNISTD_H -DHAVE_UTIME_H -DHAVE_STDDEF_H -DHAVE_DLFCN_H -DHAVE_MALLOC_H -DHAVE_MEMORY_H -DHAVE_NETINET_IF_ETHER_H -DHAVE_STDINT_H -DHAVE_SYS_UTSNAME_H -std=gnu11 -o CMakeFiles/cmTC_4552b.dir/CurlTests.c.o -c /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:106:23: error: storage size of 'hdata' isn't known
+   struct hostent_data hdata;
+                       ^
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:141:8: error: too few arguments to function 'gethostbyname_r'
+   rc = gethostbyname_r(address, &h, &hdata);
+        ^
+In file included from /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:93:0:
+/usr/include/netdb.h:179:12: note: declared here
+ extern int gethostbyname_r (const char *__restrict __name,
+            ^
+CMakeFiles/cmTC_4552b.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_4552b.dir/CurlTests.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_4552b.dir/CurlTests.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_4552b/fast' failed
+make: *** [cmTC_4552b/fast] Error 2
+
+
+Performing Curl Test HAVE_GETHOSTBYNAME_R_5_REENTRANT failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_d6cf8/fast && make  -f CMakeFiles/cmTC_d6cf8.dir/build.make CMakeFiles/cmTC_d6cf8.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d6cf8.dir/CurlTests.c.o
+/usr/bin/gcc   -w -DHAVE_GETHOSTBYNAME_R_5_REENTRANT  -DHAVE_STDIO_H -DHAVE_INTTYPES_H -DHAVE_SYS_IOCTL_H -DHAVE_SYS_PARAM_H -DHAVE_SYS_POLL_H -DHAVE_SYS_RESOURCE_H -DHAVE_SYS_SELECT_H -DHAVE_SYS_SOCKET_H -DHAVE_SYS_STAT_H -DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_SYS_UIO_H -DHAVE_SYS_UN_H -DHAVE_SYS_XATTR_H -DHAVE_ALLOCA_H -DHAVE_ARPA_INET_H -DHAVE_ARPA_TFTP_H -DHAVE_ASSERT_H -DHAVE_ERR_H -DHAVE_ERRNO_H -DHAVE_FCNTL_H -DHAVE_IFADDRS_H -DHAVE_LIBGEN_H -DHAVE_LOCALE_H -DHAVE_NET_IF_H -DHAVE_NETDB_H -DHAVE_NETINET_IN_H -DHAVE_NETINET_TCP_H -DHAVE_POLL_H -DHAVE_PWD_H -DHAVE_SETJMP_H -DHAVE_SGTTY_H -DHAVE_SIGNAL_H -DHAVE_STDBOOL_H -DHAVE_STDINT_H -DHAVE_STDIO_H -DHAVE_STDLIB_H -DHAVE_STRING_H -DHAVE_STRINGS_H -DHAVE_STROPTS_H -DHAVE_TERMIO_H -DHAVE_TERMIOS_H -DHAVE_TIME_H -DHAVE_UNISTD_H -DHAVE_UTIME_H -DHAVE_STDDEF_H -DHAVE_DLFCN_H -DHAVE_MALLOC_H -DHAVE_MEMORY_H -DHAVE_NETINET_IF_ETHER_H -DHAVE_STDINT_H -DHAVE_SYS_UTSNAME_H -std=gnu11 -o CMakeFiles/cmTC_d6cf8.dir/CurlTests.c.o -c /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:144:8: error: too few arguments to function 'gethostbyname_r'
+   rc = gethostbyname_r(address, &h, buffer, 8192, &h_errnop);
+        ^
+In file included from /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:93:0:
+/usr/include/netdb.h:179:12: note: declared here
+ extern int gethostbyname_r (const char *__restrict __name,
+            ^
+CMakeFiles/cmTC_d6cf8.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_d6cf8.dir/CurlTests.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_d6cf8.dir/CurlTests.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_d6cf8/fast' failed
+make: *** [cmTC_d6cf8/fast] Error 2
+
+
+Performing Curl Test HAVE_INET_NTOA_R_DECL failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_8a527/fast && make  -f CMakeFiles/cmTC_8a527.dir/build.make CMakeFiles/cmTC_8a527.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8a527.dir/CurlTests.c.o
+/usr/bin/gcc   -w -DHAVE_INET_NTOA_R_DECL  -DHAVE_STDIO_H -DHAVE_INTTYPES_H -DHAVE_SYS_IOCTL_H -DHAVE_SYS_PARAM_H -DHAVE_SYS_POLL_H -DHAVE_SYS_RESOURCE_H -DHAVE_SYS_SELECT_H -DHAVE_SYS_SOCKET_H -DHAVE_SYS_STAT_H -DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_SYS_UIO_H -DHAVE_SYS_UN_H -DHAVE_SYS_XATTR_H -DHAVE_ALLOCA_H -DHAVE_ARPA_INET_H -DHAVE_ARPA_TFTP_H -DHAVE_ASSERT_H -DHAVE_ERR_H -DHAVE_ERRNO_H -DHAVE_FCNTL_H -DHAVE_IFADDRS_H -DHAVE_LIBGEN_H -DHAVE_LOCALE_H -DHAVE_NET_IF_H -DHAVE_NETDB_H -DHAVE_NETINET_IN_H -DHAVE_NETINET_TCP_H -DHAVE_POLL_H -DHAVE_PWD_H -DHAVE_SETJMP_H -DHAVE_SGTTY_H -DHAVE_SIGNAL_H -DHAVE_STDBOOL_H -DHAVE_STDINT_H -DHAVE_STDIO_H -DHAVE_STDLIB_H -DHAVE_STRING_H -DHAVE_STRINGS_H -DHAVE_STROPTS_H -DHAVE_TERMIO_H -DHAVE_TERMIOS_H -DHAVE_TIME_H -DHAVE_UNISTD_H -DHAVE_UTIME_H -DHAVE_STDDEF_H -DHAVE_DLFCN_H -DHAVE_MALLOC_H -DHAVE_MEMORY_H -DHAVE_NETINET_IF_ETHER_H -DHAVE_STDINT_H -DHAVE_SYS_UTSNAME_H -std=gnu11 -o CMakeFiles/cmTC_8a527.dir/CurlTests.c.o -c /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:244:21: error: 'inet_ntoa_r' undeclared (first use in this function)
+   func = (func_type)inet_ntoa_r;
+                     ^
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:244:21: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_8a527.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_8a527.dir/CurlTests.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_8a527.dir/CurlTests.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_8a527/fast' failed
+make: *** [cmTC_8a527/fast] Error 2
+
+
+Performing Curl Test HAVE_INET_NTOA_R_DECL_REENTRANT failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_a0f4a/fast && make  -f CMakeFiles/cmTC_a0f4a.dir/build.make CMakeFiles/cmTC_a0f4a.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a0f4a.dir/CurlTests.c.o
+/usr/bin/gcc   -w -DHAVE_INET_NTOA_R_DECL_REENTRANT  -DHAVE_STDIO_H -DHAVE_INTTYPES_H -DHAVE_SYS_IOCTL_H -DHAVE_SYS_PARAM_H -DHAVE_SYS_POLL_H -DHAVE_SYS_RESOURCE_H -DHAVE_SYS_SELECT_H -DHAVE_SYS_SOCKET_H -DHAVE_SYS_STAT_H -DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_SYS_UIO_H -DHAVE_SYS_UN_H -DHAVE_SYS_XATTR_H -DHAVE_ALLOCA_H -DHAVE_ARPA_INET_H -DHAVE_ARPA_TFTP_H -DHAVE_ASSERT_H -DHAVE_ERR_H -DHAVE_ERRNO_H -DHAVE_FCNTL_H -DHAVE_IFADDRS_H -DHAVE_LIBGEN_H -DHAVE_LOCALE_H -DHAVE_NET_IF_H -DHAVE_NETDB_H -DHAVE_NETINET_IN_H -DHAVE_NETINET_TCP_H -DHAVE_POLL_H -DHAVE_PWD_H -DHAVE_SETJMP_H -DHAVE_SGTTY_H -DHAVE_SIGNAL_H -DHAVE_STDBOOL_H -DHAVE_STDINT_H -DHAVE_STDIO_H -DHAVE_STDLIB_H -DHAVE_STRING_H -DHAVE_STRINGS_H -DHAVE_STROPTS_H -DHAVE_TERMIO_H -DHAVE_TERMIOS_H -DHAVE_TIME_H -DHAVE_UNISTD_H -DHAVE_UTIME_H -DHAVE_STDDEF_H -DHAVE_DLFCN_H -DHAVE_MALLOC_H -DHAVE_MEMORY_H -DHAVE_NETINET_IF_ETHER_H -DHAVE_STDINT_H -DHAVE_SYS_UTSNAME_H -std=gnu11 -o CMakeFiles/cmTC_a0f4a.dir/CurlTests.c.o -c /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:260:22: error: 'inet_ntoa_r' undeclared (first use in this function)
+   func = (func_type)&inet_ntoa_r;
+                      ^
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:260:22: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_a0f4a.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_a0f4a.dir/CurlTests.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_a0f4a.dir/CurlTests.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_a0f4a/fast' failed
+make: *** [cmTC_a0f4a/fast] Error 2
+
+
+Performing Curl Test HAVE_GLIBC_STRERROR_R failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_78dca/fast && make  -f CMakeFiles/cmTC_78dca.dir/build.make CMakeFiles/cmTC_78dca.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_78dca.dir/CurlTests.c.o
+/usr/bin/gcc   -w -DHAVE_GLIBC_STRERROR_R  -DHAVE_STDIO_H -DHAVE_INTTYPES_H -DHAVE_SYS_IOCTL_H -DHAVE_SYS_PARAM_H -DHAVE_SYS_POLL_H -DHAVE_SYS_RESOURCE_H -DHAVE_SYS_SELECT_H -DHAVE_SYS_SOCKET_H -DHAVE_SYS_STAT_H -DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_SYS_UIO_H -DHAVE_SYS_UN_H -DHAVE_SYS_XATTR_H -DHAVE_ALLOCA_H -DHAVE_ARPA_INET_H -DHAVE_ARPA_TFTP_H -DHAVE_ASSERT_H -DHAVE_ERR_H -DHAVE_ERRNO_H -DHAVE_FCNTL_H -DHAVE_IFADDRS_H -DHAVE_LIBGEN_H -DHAVE_LOCALE_H -DHAVE_NET_IF_H -DHAVE_NETDB_H -DHAVE_NETINET_IN_H -DHAVE_NETINET_TCP_H -DHAVE_POLL_H -DHAVE_PWD_H -DHAVE_SETJMP_H -DHAVE_SGTTY_H -DHAVE_SIGNAL_H -DHAVE_STDBOOL_H -DHAVE_STDINT_H -DHAVE_STDIO_H -DHAVE_STDLIB_H -DHAVE_STRING_H -DHAVE_STRINGS_H -DHAVE_STROPTS_H -DHAVE_TERMIO_H -DHAVE_TERMIOS_H -DHAVE_TIME_H -DHAVE_UNISTD_H -DHAVE_UTIME_H -DHAVE_STDDEF_H -DHAVE_DLFCN_H -DHAVE_MALLOC_H -DHAVE_MEMORY_H -DHAVE_NETINET_IF_ETHER_H -DHAVE_STDINT_H -DHAVE_SYS_UTSNAME_H -std=gnu11 -o CMakeFiles/cmTC_78dca.dir/CurlTests.c.o -c /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:521:51: error: subscripted value is neither array nor pointer nor vector
+   check(strerror_r(EACCES, buffer, sizeof(buffer))[0]);
+                                                   ^
+CMakeFiles/cmTC_78dca.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_78dca.dir/CurlTests.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_78dca.dir/CurlTests.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_78dca/fast' failed
+make: *** [cmTC_78dca/fast] Error 2
+
+
+Performing Curl Test HAVE_BUILTIN_AVAILABLE failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_aeb10/fast && make  -f CMakeFiles/cmTC_aeb10.dir/build.make CMakeFiles/cmTC_aeb10.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_aeb10.dir/CurlTests.c.o
+/usr/bin/gcc   -w -DHAVE_BUILTIN_AVAILABLE  -DHAVE_STDIO_H -DHAVE_INTTYPES_H -DHAVE_SYS_IOCTL_H -DHAVE_SYS_PARAM_H -DHAVE_SYS_POLL_H -DHAVE_SYS_RESOURCE_H -DHAVE_SYS_SELECT_H -DHAVE_SYS_SOCKET_H -DHAVE_SYS_STAT_H -DHAVE_SYS_TIME_H -DHAVE_SYS_TYPES_H -DHAVE_SYS_UIO_H -DHAVE_SYS_UN_H -DHAVE_SYS_XATTR_H -DHAVE_ALLOCA_H -DHAVE_ARPA_INET_H -DHAVE_ARPA_TFTP_H -DHAVE_ASSERT_H -DHAVE_ERR_H -DHAVE_ERRNO_H -DHAVE_FCNTL_H -DHAVE_IFADDRS_H -DHAVE_LIBGEN_H -DHAVE_LOCALE_H -DHAVE_NET_IF_H -DHAVE_NETDB_H -DHAVE_NETINET_IN_H -DHAVE_NETINET_TCP_H -DHAVE_POLL_H -DHAVE_PWD_H -DHAVE_SETJMP_H -DHAVE_SGTTY_H -DHAVE_SIGNAL_H -DHAVE_STDBOOL_H -DHAVE_STDINT_H -DHAVE_STDIO_H -DHAVE_STDLIB_H -DHAVE_STRING_H -DHAVE_STRINGS_H -DHAVE_STROPTS_H -DHAVE_TERMIO_H -DHAVE_TERMIOS_H -DHAVE_TIME_H -DHAVE_UNISTD_H -DHAVE_UTIME_H -DHAVE_STDDEF_H -DHAVE_DLFCN_H -DHAVE_MALLOC_H -DHAVE_MEMORY_H -DHAVE_NETINET_IF_ETHER_H -DHAVE_STDINT_H -DHAVE_SYS_UTSNAME_H -std=gnu11 -o CMakeFiles/cmTC_aeb10.dir/CurlTests.c.o -c /root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:568:26: error: 'macOS' undeclared (first use in this function)
+   if(__builtin_available(macOS 10.12, *)) {}
+                          ^
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:568:26: note: each undeclared identifier is reported only once for each function it appears in
+/root/workfiles/cmake/cmake-3.19.5/Utilities/cmcurl/CMake/CurlTests.c:568:32: error: expected ')' before numeric constant
+   if(__builtin_available(macOS 10.12, *)) {}
+                                ^
+CMakeFiles/cmTC_aeb10.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_aeb10.dir/CurlTests.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_aeb10.dir/CurlTests.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_aeb10/fast' failed
+make: *** [cmTC_aeb10/fast] Error 2
+
+
+Determining if the getrandom exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_3e5e5/fast && make  -f CMakeFiles/cmTC_3e5e5.dir/build.make CMakeFiles/cmTC_3e5e5.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3e5e5.dir/CheckSymbolExists.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_3e5e5.dir/CheckSymbolExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:2:24: fatal error: sys/random.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_3e5e5.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_3e5e5.dir/CheckSymbolExists.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_3e5e5.dir/CheckSymbolExists.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_3e5e5/fast' failed
+make: *** [cmTC_3e5e5/fast] Error 2
+
+
+File /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <sys/random.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef getrandom
+  return ((int*)(&getrandom))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the arc4random_buf exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_8e322/fast && make  -f CMakeFiles/cmTC_8e322.dir/build.make CMakeFiles/cmTC_8e322.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8e322.dir/CheckSymbolExists.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_8e322.dir/CheckSymbolExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: error: 'arc4random_buf' undeclared (first use in this function)
+   return ((int*)(&arc4random_buf))[argc];
+                   ^
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_8e322.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_8e322.dir/CheckSymbolExists.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_8e322.dir/CheckSymbolExists.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_8e322/fast' failed
+make: *** [cmTC_8e322/fast] Error 2
+
+
+File /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdlib.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef arc4random_buf
+  return ((int*)(&arc4random_buf))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the arc4random exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_19f67/fast && make  -f CMakeFiles/cmTC_19f67.dir/build.make CMakeFiles/cmTC_19f67.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_19f67.dir/CheckSymbolExists.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_19f67.dir/CheckSymbolExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: error: 'arc4random' undeclared (first use in this function)
+   return ((int*)(&arc4random))[argc];
+                   ^
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_19f67.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_19f67.dir/CheckSymbolExists.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_19f67.dir/CheckSymbolExists.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_19f67/fast' failed
+make: *** [cmTC_19f67/fast] Error 2
+
+
+File /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdlib.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef arc4random
+  return ((int*)(&arc4random))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if files sys/types.h;ctype.h;copyfile.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_7ba20/fast && make  -f CMakeFiles/cmTC_7ba20.dir/build.make CMakeFiles/cmTC_7ba20.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7ba20.dir/HAVE_COPYFILE_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_7ba20.dir/HAVE_COPYFILE_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_COPYFILE_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_COPYFILE_H.c:4:22: fatal error: copyfile.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_7ba20.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_7ba20.dir/HAVE_COPYFILE_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_7ba20.dir/HAVE_COPYFILE_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_7ba20/fast' failed
+make: *** [cmTC_7ba20/fast] Error 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <copyfile.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;direct.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_4b7a7/fast && make  -f CMakeFiles/cmTC_4b7a7.dir/build.make CMakeFiles/cmTC_4b7a7.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4b7a7.dir/HAVE_DIRECT_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_4b7a7.dir/HAVE_DIRECT_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_DIRECT_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_DIRECT_H.c:4:20: fatal error: direct.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_4b7a7.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_4b7a7.dir/HAVE_DIRECT_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_4b7a7.dir/HAVE_DIRECT_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_4b7a7/fast' failed
+make: *** [cmTC_4b7a7/fast] Error 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <direct.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;ext2fs/ext2_fs.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e38fc/fast && make  -f CMakeFiles/cmTC_e38fc.dir/build.make CMakeFiles/cmTC_e38fc.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e38fc.dir/HAVE_EXT2FS_EXT2_FS_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_e38fc.dir/HAVE_EXT2FS_EXT2_FS_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_EXT2FS_EXT2_FS_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_EXT2FS_EXT2_FS_H.c:6:28: fatal error: ext2fs/ext2_fs.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_e38fc.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_e38fc.dir/HAVE_EXT2FS_EXT2_FS_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_e38fc.dir/HAVE_EXT2FS_EXT2_FS_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_e38fc/fast' failed
+make: *** [cmTC_e38fc/fast] Error 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <ext2fs/ext2_fs.h>
+
+
+int main(void){return 0;}
+
+Performing C SOURCE FILE Test HAVE_WORKING_EXT2_IOC_GETFLAGS failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e8377/fast && make  -f CMakeFiles/cmTC_e8377.dir/build.make CMakeFiles/cmTC_e8377.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e8377.dir/src.c.o
+/usr/bin/gcc -DHAVE_WORKING_EXT2_IOC_GETFLAGS  -w  -std=gnu11 -o CMakeFiles/cmTC_e8377.dir/src.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c:2:28: fatal error: ext2fs/ext2_fs.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_e8377.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_e8377.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_e8377.dir/src.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_e8377/fast' failed
+make: *** [cmTC_e8377/fast] Error 2
+
+
+Source file was:
+#include <sys/ioctl.h>
+#include <ext2fs/ext2_fs.h>
+int main(void) { return EXT2_IOC_GETFLAGS; }
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;membership.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_7f240/fast && make  -f CMakeFiles/cmTC_7f240.dir/build.make CMakeFiles/cmTC_7f240.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7f240.dir/HAVE_MEMBERSHIP_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_7f240.dir/HAVE_MEMBERSHIP_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_MEMBERSHIP_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_MEMBERSHIP_H.c:15:24: fatal error: membership.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_7f240.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_7f240.dir/HAVE_MEMBERSHIP_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_7f240.dir/HAVE_MEMBERSHIP_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_7f240/fast' failed
+make: *** [cmTC_7f240/fast] Error 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <membership.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;readpassphrase.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_3b2aa/fast && make  -f CMakeFiles/cmTC_3b2aa.dir/build.make CMakeFiles/cmTC_3b2aa.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3b2aa.dir/HAVE_READPASSPHRASE_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_3b2aa.dir/HAVE_READPASSPHRASE_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_READPASSPHRASE_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_READPASSPHRASE_H.c:20:28: fatal error: readpassphrase.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_3b2aa.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_3b2aa.dir/HAVE_READPASSPHRASE_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_3b2aa.dir/HAVE_READPASSPHRASE_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_3b2aa/fast' failed
+make: *** [cmTC_3b2aa/fast] Error 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <readpassphrase.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;regex.h;signal.h;spawn.h;stdarg.h;stdlib.h;string.h;strings.h;sys/acl.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_5e171/fast && make  -f CMakeFiles/cmTC_5e171.dir/build.make CMakeFiles/cmTC_5e171.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5e171.dir/HAVE_SYS_ACL_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_5e171.dir/HAVE_SYS_ACL_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_SYS_ACL_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_SYS_ACL_H.c:27:21: fatal error: sys/acl.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_5e171.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_5e171.dir/HAVE_SYS_ACL_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_5e171.dir/HAVE_SYS_ACL_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_5e171/fast' failed
+make: *** [cmTC_5e171/fast] Error 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <regex.h>
+#include <signal.h>
+#include <spawn.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/acl.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;regex.h;signal.h;spawn.h;stdarg.h;stdlib.h;string.h;strings.h;sys/cdefs.h;sys/extattr.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_edf66/fast && make  -f CMakeFiles/cmTC_edf66.dir/build.make CMakeFiles/cmTC_edf66.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_edf66.dir/HAVE_SYS_EXTATTR_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_edf66.dir/HAVE_SYS_EXTATTR_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_SYS_EXTATTR_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_SYS_EXTATTR_H.c:28:25: fatal error: sys/extattr.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_edf66.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_edf66.dir/HAVE_SYS_EXTATTR_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_edf66.dir/HAVE_SYS_EXTATTR_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_edf66/fast' failed
+make: *** [cmTC_edf66/fast] Error 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <regex.h>
+#include <signal.h>
+#include <spawn.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/cdefs.h>
+#include <sys/extattr.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;regex.h;signal.h;spawn.h;stdarg.h;stdlib.h;string.h;strings.h;sys/cdefs.h;sys/ioctl.h;sys/mkdev.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_777e3/fast && make  -f CMakeFiles/cmTC_777e3.dir/build.make CMakeFiles/cmTC_777e3.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_777e3.dir/HAVE_SYS_MKDEV_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_777e3.dir/HAVE_SYS_MKDEV_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_SYS_MKDEV_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_SYS_MKDEV_H.c:29:23: fatal error: sys/mkdev.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_777e3.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_777e3.dir/HAVE_SYS_MKDEV_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_777e3.dir/HAVE_SYS_MKDEV_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_777e3/fast' failed
+make: *** [cmTC_777e3/fast] Error 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <regex.h>
+#include <signal.h>
+#include <spawn.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/cdefs.h>
+#include <sys/ioctl.h>
+#include <sys/mkdev.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;regex.h;signal.h;spawn.h;stdarg.h;stdlib.h;string.h;strings.h;sys/cdefs.h;sys/ioctl.h;sys/mount.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_6acbd/fast && make  -f CMakeFiles/cmTC_6acbd.dir/build.make CMakeFiles/cmTC_6acbd.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6acbd.dir/HAVE_SYS_MOUNT_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_6acbd.dir/HAVE_SYS_MOUNT_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_SYS_MOUNT_H.c
+In file included from /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_SYS_MOUNT_H.c:12:0:
+/usr/include/aarch64-linux-gnu/sys/mount.h:35:3: error: expected identifier before numeric constant
+   MS_RDONLY = 1,  /* Mount read-only.  */
+   ^
+CMakeFiles/cmTC_6acbd.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_6acbd.dir/HAVE_SYS_MOUNT_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_6acbd.dir/HAVE_SYS_MOUNT_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_6acbd/fast' failed
+make: *** [cmTC_6acbd/fast] Error 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <regex.h>
+#include <signal.h>
+#include <spawn.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/cdefs.h>
+#include <sys/ioctl.h>
+#include <sys/mount.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;regex.h;signal.h;spawn.h;stdarg.h;stdlib.h;string.h;strings.h;sys/cdefs.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/richacl.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_a545b/fast && make  -f CMakeFiles/cmTC_a545b.dir/build.make CMakeFiles/cmTC_a545b.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a545b.dir/HAVE_SYS_RICHACL_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_a545b.dir/HAVE_SYS_RICHACL_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_SYS_RICHACL_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_SYS_RICHACL_H.c:31:25: fatal error: sys/richacl.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_a545b.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_a545b.dir/HAVE_SYS_RICHACL_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_a545b.dir/HAVE_SYS_RICHACL_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_a545b/fast' failed
+make: *** [cmTC_a545b/fast] Error 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <regex.h>
+#include <signal.h>
+#include <spawn.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/cdefs.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/richacl.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;regex.h;signal.h;spawn.h;stdarg.h;stdlib.h;string.h;strings.h;sys/cdefs.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/select.h;sys/stat.h;sys/statfs.h;sys/statvfs.h;sys/sysmacros.h;sys/time.h;sys/utsname.h;sys/vfs.h;sys/wait.h;sys/xattr.h;time.h;unistd.h;utime.h;wchar.h;wctype.h;windows.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_0275c/fast && make  -f CMakeFiles/cmTC_0275c.dir/build.make CMakeFiles/cmTC_0275c.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0275c.dir/HAVE_WINDOWS_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_0275c.dir/HAVE_WINDOWS_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_WINDOWS_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_WINDOWS_H.c:46:21: fatal error: windows.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_0275c.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_0275c.dir/HAVE_WINDOWS_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_0275c.dir/HAVE_WINDOWS_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_0275c/fast' failed
+make: *** [cmTC_0275c/fast] Error 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <regex.h>
+#include <signal.h>
+#include <spawn.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/cdefs.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/select.h>
+#include <sys/stat.h>
+#include <sys/statfs.h>
+#include <sys/statvfs.h>
+#include <sys/sysmacros.h>
+#include <sys/time.h>
+#include <sys/utsname.h>
+#include <sys/vfs.h>
+#include <sys/wait.h>
+#include <sys/xattr.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+#include <wchar.h>
+#include <wctype.h>
+#include <windows.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;regex.h;signal.h;spawn.h;stdarg.h;stdlib.h;string.h;strings.h;sys/cdefs.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/select.h;sys/stat.h;sys/statfs.h;sys/statvfs.h;sys/sysmacros.h;sys/time.h;sys/utsname.h;sys/vfs.h;sys/wait.h;sys/xattr.h;time.h;unistd.h;utime.h;wchar.h;wctype.h;wincrypt.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_490cd/fast && make  -f CMakeFiles/cmTC_490cd.dir/build.make CMakeFiles/cmTC_490cd.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_490cd.dir/HAVE_WINCRYPT_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_490cd.dir/HAVE_WINCRYPT_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_WINCRYPT_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_WINCRYPT_H.c:46:22: fatal error: wincrypt.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_490cd.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_490cd.dir/HAVE_WINCRYPT_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_490cd.dir/HAVE_WINCRYPT_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_490cd/fast' failed
+make: *** [cmTC_490cd/fast] Error 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <regex.h>
+#include <signal.h>
+#include <spawn.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/cdefs.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/select.h>
+#include <sys/stat.h>
+#include <sys/statfs.h>
+#include <sys/statvfs.h>
+#include <sys/sysmacros.h>
+#include <sys/time.h>
+#include <sys/utsname.h>
+#include <sys/vfs.h>
+#include <sys/wait.h>
+#include <sys/xattr.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+#include <wchar.h>
+#include <wctype.h>
+#include <wincrypt.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;regex.h;signal.h;spawn.h;stdarg.h;stdlib.h;string.h;strings.h;sys/cdefs.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/select.h;sys/stat.h;sys/statfs.h;sys/statvfs.h;sys/sysmacros.h;sys/time.h;sys/utsname.h;sys/vfs.h;sys/wait.h;sys/xattr.h;time.h;unistd.h;utime.h;wchar.h;wctype.h;winioctl.h exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_de023/fast && make  -f CMakeFiles/cmTC_de023.dir/build.make CMakeFiles/cmTC_de023.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_de023.dir/HAVE_WINIOCTL_H.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_de023.dir/HAVE_WINIOCTL_H.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_WINIOCTL_H.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CheckIncludeFiles/HAVE_WINIOCTL_H.c:46:22: fatal error: winioctl.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_de023.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_de023.dir/HAVE_WINIOCTL_H.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_de023.dir/HAVE_WINIOCTL_H.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_de023/fast' failed
+make: *** [cmTC_de023/fast] Error 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <regex.h>
+#include <signal.h>
+#include <spawn.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/cdefs.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/select.h>
+#include <sys/stat.h>
+#include <sys/statfs.h>
+#include <sys/statvfs.h>
+#include <sys/sysmacros.h>
+#include <sys/time.h>
+#include <sys/utsname.h>
+#include <sys/vfs.h>
+#include <sys/wait.h>
+#include <sys/xattr.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+#include <wchar.h>
+#include <wctype.h>
+#include <winioctl.h>
+
+
+int main(void){return 0;}
+
+Determining if the function getvfsbyname exists failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_58e0f/fast && make  -f CMakeFiles/cmTC_58e0f.dir/build.make CMakeFiles/cmTC_58e0f.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_58e0f.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -w -DCHECK_FUNCTION_EXISTS=getvfsbyname  -fno-builtin -std=gnu11 -o CMakeFiles/cmTC_58e0f.dir/CheckFunctionExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_58e0f
+/root/workfiles/cmake/cmake-3.19.5/Bootstrap.cmk/cmake -E cmake_link_script CMakeFiles/cmTC_58e0f.dir/link.txt --verbose=1
+/usr/bin/gcc  -w -DCHECK_FUNCTION_EXISTS=getvfsbyname  -fno-builtin CMakeFiles/cmTC_58e0f.dir/CheckFunctionExists.c.o -o cmTC_58e0f 
+CMakeFiles/cmTC_58e0f.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `getvfsbyname'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_58e0f.dir/build.make:105: recipe for target 'cmTC_58e0f' failed
+make[1]: *** [cmTC_58e0f] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_58e0f/fast' failed
+make: *** [cmTC_58e0f/fast] Error 2
+
+
+
+Determining if the function lchflags exists failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_00c3a/fast && make  -f CMakeFiles/cmTC_00c3a.dir/build.make CMakeFiles/cmTC_00c3a.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_00c3a.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -w -DCHECK_FUNCTION_EXISTS=lchflags  -fno-builtin -std=gnu11 -o CMakeFiles/cmTC_00c3a.dir/CheckFunctionExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_00c3a
+/root/workfiles/cmake/cmake-3.19.5/Bootstrap.cmk/cmake -E cmake_link_script CMakeFiles/cmTC_00c3a.dir/link.txt --verbose=1
+/usr/bin/gcc  -w -DCHECK_FUNCTION_EXISTS=lchflags  -fno-builtin CMakeFiles/cmTC_00c3a.dir/CheckFunctionExists.c.o -o cmTC_00c3a 
+CMakeFiles/cmTC_00c3a.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `lchflags'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_00c3a.dir/build.make:105: recipe for target 'cmTC_00c3a' failed
+make[1]: *** [cmTC_00c3a] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_00c3a/fast' failed
+make: *** [cmTC_00c3a/fast] Error 2
+
+
+
+Determining if the function readpassphrase exists failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_cc25c/fast && make  -f CMakeFiles/cmTC_cc25c.dir/build.make CMakeFiles/cmTC_cc25c.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_cc25c.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -w -DCHECK_FUNCTION_EXISTS=readpassphrase  -fno-builtin -std=gnu11 -o CMakeFiles/cmTC_cc25c.dir/CheckFunctionExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_cc25c
+/root/workfiles/cmake/cmake-3.19.5/Bootstrap.cmk/cmake -E cmake_link_script CMakeFiles/cmTC_cc25c.dir/link.txt --verbose=1
+/usr/bin/gcc  -w -DCHECK_FUNCTION_EXISTS=readpassphrase  -fno-builtin CMakeFiles/cmTC_cc25c.dir/CheckFunctionExists.c.o -o cmTC_cc25c 
+CMakeFiles/cmTC_cc25c.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `readpassphrase'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_cc25c.dir/build.make:105: recipe for target 'cmTC_cc25c' failed
+make[1]: *** [cmTC_cc25c] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_cc25c/fast' failed
+make: *** [cmTC_cc25c/fast] Error 2
+
+
+
+Determining if the function strncpy_s exists failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_fcfa9/fast && make  -f CMakeFiles/cmTC_fcfa9.dir/build.make CMakeFiles/cmTC_fcfa9.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fcfa9.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -w -DCHECK_FUNCTION_EXISTS=strncpy_s  -fno-builtin -std=gnu11 -o CMakeFiles/cmTC_fcfa9.dir/CheckFunctionExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_fcfa9
+/root/workfiles/cmake/cmake-3.19.5/Bootstrap.cmk/cmake -E cmake_link_script CMakeFiles/cmTC_fcfa9.dir/link.txt --verbose=1
+/usr/bin/gcc  -w -DCHECK_FUNCTION_EXISTS=strncpy_s  -fno-builtin CMakeFiles/cmTC_fcfa9.dir/CheckFunctionExists.c.o -o cmTC_fcfa9 
+CMakeFiles/cmTC_fcfa9.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `strncpy_s'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_fcfa9.dir/build.make:105: recipe for target 'cmTC_fcfa9' failed
+make[1]: *** [cmTC_fcfa9] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_fcfa9/fast' failed
+make: *** [cmTC_fcfa9/fast] Error 2
+
+
+
+Determining if the function _ctime64_s exists failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_96755/fast && make  -f CMakeFiles/cmTC_96755.dir/build.make CMakeFiles/cmTC_96755.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_96755.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -w -DCHECK_FUNCTION_EXISTS=_ctime64_s  -fno-builtin -std=gnu11 -o CMakeFiles/cmTC_96755.dir/CheckFunctionExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_96755
+/root/workfiles/cmake/cmake-3.19.5/Bootstrap.cmk/cmake -E cmake_link_script CMakeFiles/cmTC_96755.dir/link.txt --verbose=1
+/usr/bin/gcc  -w -DCHECK_FUNCTION_EXISTS=_ctime64_s  -fno-builtin CMakeFiles/cmTC_96755.dir/CheckFunctionExists.c.o -o cmTC_96755 
+CMakeFiles/cmTC_96755.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `_ctime64_s'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_96755.dir/build.make:105: recipe for target 'cmTC_96755' failed
+make[1]: *** [cmTC_96755] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_96755/fast' failed
+make: *** [cmTC_96755/fast] Error 2
+
+
+
+Determining if the function _fseeki64 exists failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_b8546/fast && make  -f CMakeFiles/cmTC_b8546.dir/build.make CMakeFiles/cmTC_b8546.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b8546.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -w -DCHECK_FUNCTION_EXISTS=_fseeki64  -fno-builtin -std=gnu11 -o CMakeFiles/cmTC_b8546.dir/CheckFunctionExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_b8546
+/root/workfiles/cmake/cmake-3.19.5/Bootstrap.cmk/cmake -E cmake_link_script CMakeFiles/cmTC_b8546.dir/link.txt --verbose=1
+/usr/bin/gcc  -w -DCHECK_FUNCTION_EXISTS=_fseeki64  -fno-builtin CMakeFiles/cmTC_b8546.dir/CheckFunctionExists.c.o -o cmTC_b8546 
+CMakeFiles/cmTC_b8546.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `_fseeki64'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_b8546.dir/build.make:105: recipe for target 'cmTC_b8546' failed
+make[1]: *** [cmTC_b8546] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_b8546/fast' failed
+make: *** [cmTC_b8546/fast] Error 2
+
+
+
+Determining if the function _get_timezone exists failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_60170/fast && make  -f CMakeFiles/cmTC_60170.dir/build.make CMakeFiles/cmTC_60170.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_60170.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -w -DCHECK_FUNCTION_EXISTS=_get_timezone  -fno-builtin -std=gnu11 -o CMakeFiles/cmTC_60170.dir/CheckFunctionExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_60170
+/root/workfiles/cmake/cmake-3.19.5/Bootstrap.cmk/cmake -E cmake_link_script CMakeFiles/cmTC_60170.dir/link.txt --verbose=1
+/usr/bin/gcc  -w -DCHECK_FUNCTION_EXISTS=_get_timezone  -fno-builtin CMakeFiles/cmTC_60170.dir/CheckFunctionExists.c.o -o cmTC_60170 
+CMakeFiles/cmTC_60170.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `_get_timezone'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_60170.dir/build.make:105: recipe for target 'cmTC_60170' failed
+make[1]: *** [cmTC_60170] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_60170/fast' failed
+make: *** [cmTC_60170/fast] Error 2
+
+
+
+Determining if the function _gmtime64_s exists failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_626ed/fast && make  -f CMakeFiles/cmTC_626ed.dir/build.make CMakeFiles/cmTC_626ed.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_626ed.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -w -DCHECK_FUNCTION_EXISTS=_gmtime64_s  -fno-builtin -std=gnu11 -o CMakeFiles/cmTC_626ed.dir/CheckFunctionExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_626ed
+/root/workfiles/cmake/cmake-3.19.5/Bootstrap.cmk/cmake -E cmake_link_script CMakeFiles/cmTC_626ed.dir/link.txt --verbose=1
+/usr/bin/gcc  -w -DCHECK_FUNCTION_EXISTS=_gmtime64_s  -fno-builtin CMakeFiles/cmTC_626ed.dir/CheckFunctionExists.c.o -o cmTC_626ed 
+CMakeFiles/cmTC_626ed.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `_gmtime64_s'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_626ed.dir/build.make:105: recipe for target 'cmTC_626ed' failed
+make[1]: *** [cmTC_626ed] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_626ed/fast' failed
+make: *** [cmTC_626ed/fast] Error 2
+
+
+
+Determining if the function _localtime64_s exists failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_52604/fast && make  -f CMakeFiles/cmTC_52604.dir/build.make CMakeFiles/cmTC_52604.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_52604.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -w -DCHECK_FUNCTION_EXISTS=_localtime64_s  -fno-builtin -std=gnu11 -o CMakeFiles/cmTC_52604.dir/CheckFunctionExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_52604
+/root/workfiles/cmake/cmake-3.19.5/Bootstrap.cmk/cmake -E cmake_link_script CMakeFiles/cmTC_52604.dir/link.txt --verbose=1
+/usr/bin/gcc  -w -DCHECK_FUNCTION_EXISTS=_localtime64_s  -fno-builtin CMakeFiles/cmTC_52604.dir/CheckFunctionExists.c.o -o cmTC_52604 
+CMakeFiles/cmTC_52604.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `_localtime64_s'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_52604.dir/build.make:105: recipe for target 'cmTC_52604' failed
+make[1]: *** [cmTC_52604] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_52604/fast' failed
+make: *** [cmTC_52604/fast] Error 2
+
+
+
+Determining if the function _mkgmtime64 exists failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_b7bf9/fast && make  -f CMakeFiles/cmTC_b7bf9.dir/build.make CMakeFiles/cmTC_b7bf9.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b7bf9.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -w -DCHECK_FUNCTION_EXISTS=_mkgmtime64  -fno-builtin -std=gnu11 -o CMakeFiles/cmTC_b7bf9.dir/CheckFunctionExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_b7bf9
+/root/workfiles/cmake/cmake-3.19.5/Bootstrap.cmk/cmake -E cmake_link_script CMakeFiles/cmTC_b7bf9.dir/link.txt --verbose=1
+/usr/bin/gcc  -w -DCHECK_FUNCTION_EXISTS=_mkgmtime64  -fno-builtin CMakeFiles/cmTC_b7bf9.dir/CheckFunctionExists.c.o -o cmTC_b7bf9 
+CMakeFiles/cmTC_b7bf9.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `_mkgmtime64'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_b7bf9.dir/build.make:105: recipe for target 'cmTC_b7bf9' failed
+make[1]: *** [cmTC_b7bf9] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_b7bf9/fast' failed
+make: *** [cmTC_b7bf9/fast] Error 2
+
+
+
+Determining if the function cygwin_conv_path exists failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_8a3e2/fast && make  -f CMakeFiles/cmTC_8a3e2.dir/build.make CMakeFiles/cmTC_8a3e2.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8a3e2.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -w -DCHECK_FUNCTION_EXISTS=cygwin_conv_path  -fno-builtin -std=gnu11 -o CMakeFiles/cmTC_8a3e2.dir/CheckFunctionExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_8a3e2
+/root/workfiles/cmake/cmake-3.19.5/Bootstrap.cmk/cmake -E cmake_link_script CMakeFiles/cmTC_8a3e2.dir/link.txt --verbose=1
+/usr/bin/gcc  -w -DCHECK_FUNCTION_EXISTS=cygwin_conv_path  -fno-builtin CMakeFiles/cmTC_8a3e2.dir/CheckFunctionExists.c.o -o cmTC_8a3e2 
+CMakeFiles/cmTC_8a3e2.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `cygwin_conv_path'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_8a3e2.dir/build.make:105: recipe for target 'cmTC_8a3e2' failed
+make[1]: *** [cmTC_8a3e2] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_8a3e2/fast' failed
+make: *** [cmTC_8a3e2/fast] Error 2
+
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_VFSCONF failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_28680/fast && make  -f CMakeFiles/cmTC_28680.dir/build.make CMakeFiles/cmTC_28680.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_28680.dir/src.c.o
+/usr/bin/gcc -DHAVE_STRUCT_VFSCONF  -w  -std=gnu11 -o CMakeFiles/cmTC_28680.dir/src.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c:3:33: error: storage size of 'v' isn't known
+ int main(void) { struct vfsconf v; return sizeof(v);}
+                                 ^
+CMakeFiles/cmTC_28680.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_28680.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_28680.dir/src.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_28680/fast' failed
+make: *** [cmTC_28680/fast] Error 2
+
+
+Source file was:
+#include <sys/types.h>
+#include <sys/mount.h>
+int main(void) { struct vfsconf v; return sizeof(v);}
+Performing C SOURCE FILE Test HAVE_STRUCT_XVFSCONF failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_1a0db/fast && make  -f CMakeFiles/cmTC_1a0db.dir/build.make CMakeFiles/cmTC_1a0db.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1a0db.dir/src.c.o
+/usr/bin/gcc -DHAVE_STRUCT_XVFSCONF  -w  -std=gnu11 -o CMakeFiles/cmTC_1a0db.dir/src.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c:3:34: error: storage size of 'v' isn't known
+ int main(void) { struct xvfsconf v; return sizeof(v);}
+                                  ^
+CMakeFiles/cmTC_1a0db.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_1a0db.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_1a0db.dir/src.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_1a0db/fast' failed
+make: *** [cmTC_1a0db/fast] Error 2
+
+
+Source file was:
+#include <sys/types.h>
+#include <sys/mount.h>
+int main(void) { struct xvfsconf v; return sizeof(v);}
+Performing C SOURCE FILE Test MAJOR_IN_MKDEV failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ca6e2/fast && make  -f CMakeFiles/cmTC_ca6e2.dir/build.make CMakeFiles/cmTC_ca6e2.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ca6e2.dir/src.c.o
+/usr/bin/gcc -DMAJOR_IN_MKDEV  -w  -std=gnu11 -o CMakeFiles/cmTC_ca6e2.dir/src.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c:1:23: fatal error: sys/mkdev.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_ca6e2.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_ca6e2.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_ca6e2.dir/src.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_ca6e2/fast' failed
+make: *** [cmTC_ca6e2/fast] Error 2
+
+
+Source file was:
+#include <sys/mkdev.h>
+int main() { return major(256); }
+Performing C SOURCE FILE Test HAVE_LZMA_STREAM_ENCODER_MT failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_82fab/fast && make  -f CMakeFiles/cmTC_82fab.dir/build.make CMakeFiles/cmTC_82fab.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_82fab.dir/src.c.o
+/usr/bin/gcc -DHAVE_LZMA_STREAM_ENCODER_MT  -w  -std=gnu11 -o CMakeFiles/cmTC_82fab.dir/src.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c:1:18: fatal error: lzma.h: No such file or directory
+compilation terminated.
+CMakeFiles/cmTC_82fab.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_82fab.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_82fab.dir/src.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_82fab/fast' failed
+make: *** [cmTC_82fab/fast] Error 2
+
+
+Source file was:
+#include <lzma.h>
+#if LZMA_VERSION < 50020000
+#error unsupported
+#endif
+int main(void){lzma_stream_encoder_mt(0, 0); return 0;}
+Determining if the EFTYPE exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_6123d/fast && make  -f CMakeFiles/cmTC_6123d.dir/build.make CMakeFiles/cmTC_6123d.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6123d.dir/CheckSymbolExists.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_6123d.dir/CheckSymbolExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: error: 'EFTYPE' undeclared (first use in this function)
+   return ((int*)(&EFTYPE))[argc];
+                   ^
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_6123d.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_6123d.dir/CheckSymbolExists.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_6123d.dir/CheckSymbolExists.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_6123d/fast' failed
+make: *** [cmTC_6123d/fast] Error 2
+
+
+File /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <errno.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef EFTYPE
+  return ((int*)(&EFTYPE))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the D_MD_ORDER exist failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_1a1be/fast && make  -f CMakeFiles/cmTC_1a1be.dir/build.make CMakeFiles/cmTC_1a1be.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1a1be.dir/CheckSymbolExists.c.o
+/usr/bin/gcc   -w  -std=gnu11 -o CMakeFiles/cmTC_1a1be.dir/CheckSymbolExists.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: error: 'D_MD_ORDER' undeclared (first use in this function)
+   return ((int*)(&D_MD_ORDER))[argc];
+                   ^
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: note: each undeclared identifier is reported only once for each function it appears in
+CMakeFiles/cmTC_1a1be.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_1a1be.dir/CheckSymbolExists.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_1a1be.dir/CheckSymbolExists.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_1a1be/fast' failed
+make: *** [cmTC_1a1be/fast] Error 2
+
+
+File /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <langinfo.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef D_MD_ORDER
+  return ((int*)(&D_MD_ORDER))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Performing C SOURCE FILE Test HAVE_STRUCT_TM___TM_GMTOFF failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_01f0c/fast && make  -f CMakeFiles/cmTC_01f0c.dir/build.make CMakeFiles/cmTC_01f0c.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_01f0c.dir/src.c.o
+/usr/bin/gcc -DHAVE_STRUCT_TM___TM_GMTOFF  -w  -std=gnu11 -o CMakeFiles/cmTC_01f0c.dir/src.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c:6:32: error: 'struct tm' has no member named '__tm_gmtoff'
+   (void)sizeof(((struct tm *)0)->__tm_gmtoff);
+                                ^
+CMakeFiles/cmTC_01f0c.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_01f0c.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_01f0c.dir/src.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_01f0c/fast' failed
+make: *** [cmTC_01f0c/fast] Error 2
+
+
+Source file was:
+
+#include <time.h>
+
+int main()
+{
+  (void)sizeof(((struct tm *)0)->__tm_gmtoff);
+  return 0;
+}
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STATFS_F_NAMEMAX failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_7ee4c/fast && make  -f CMakeFiles/cmTC_7ee4c.dir/build.make CMakeFiles/cmTC_7ee4c.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7ee4c.dir/src.c.o
+/usr/bin/gcc -DHAVE_STRUCT_STATFS_F_NAMEMAX  -w  -std=gnu11 -o CMakeFiles/cmTC_7ee4c.dir/src.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c:7:36: error: dereferencing pointer to incomplete type 'struct statfs'
+   (void)sizeof(((struct statfs *)0)->f_namemax);
+                                    ^
+CMakeFiles/cmTC_7ee4c.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_7ee4c.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_7ee4c.dir/src.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_7ee4c/fast' failed
+make: *** [cmTC_7ee4c/fast] Error 2
+
+
+Source file was:
+
+#include <sys/param.h>
+#include <sys/mount.h>
+
+int main()
+{
+  (void)sizeof(((struct statfs *)0)->f_namemax);
+  return 0;
+}
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_BIRTHTIME failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_118e6/fast && make  -f CMakeFiles/cmTC_118e6.dir/build.make CMakeFiles/cmTC_118e6.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_118e6.dir/src.c.o
+/usr/bin/gcc -DHAVE_STRUCT_STAT_ST_BIRTHTIME  -w  -std=gnu11 -o CMakeFiles/cmTC_118e6.dir/src.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c:7:34: error: 'struct stat' has no member named 'st_birthtime'
+   (void)sizeof(((struct stat *)0)->st_birthtime);
+                                  ^
+CMakeFiles/cmTC_118e6.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_118e6.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_118e6.dir/src.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_118e6/fast' failed
+make: *** [cmTC_118e6/fast] Error 2
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_birthtime);
+  return 0;
+}
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_BIRTHTIMESPEC_TV_NSEC failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_5911b/fast && make  -f CMakeFiles/cmTC_5911b.dir/build.make CMakeFiles/cmTC_5911b.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5911b.dir/src.c.o
+/usr/bin/gcc -DHAVE_STRUCT_STAT_ST_BIRTHTIMESPEC_TV_NSEC  -w  -std=gnu11 -o CMakeFiles/cmTC_5911b.dir/src.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c:7:34: error: 'struct stat' has no member named 'st_birthtimespec'
+   (void)sizeof(((struct stat *)0)->st_birthtimespec.tv_nsec);
+                                  ^
+CMakeFiles/cmTC_5911b.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_5911b.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_5911b.dir/src.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_5911b/fast' failed
+make: *** [cmTC_5911b/fast] Error 2
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_birthtimespec.tv_nsec);
+  return 0;
+}
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_MTIMESPEC_TV_NSEC failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_becd2/fast && make  -f CMakeFiles/cmTC_becd2.dir/build.make CMakeFiles/cmTC_becd2.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_becd2.dir/src.c.o
+/usr/bin/gcc -DHAVE_STRUCT_STAT_ST_MTIMESPEC_TV_NSEC  -w  -std=gnu11 -o CMakeFiles/cmTC_becd2.dir/src.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c:7:34: error: 'struct stat' has no member named 'st_mtimespec'
+   (void)sizeof(((struct stat *)0)->st_mtimespec.tv_nsec);
+                                  ^
+CMakeFiles/cmTC_becd2.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_becd2.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_becd2.dir/src.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_becd2/fast' failed
+make: *** [cmTC_becd2/fast] Error 2
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_mtimespec.tv_nsec);
+  return 0;
+}
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_MTIME_N failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_47ae8/fast && make  -f CMakeFiles/cmTC_47ae8.dir/build.make CMakeFiles/cmTC_47ae8.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_47ae8.dir/src.c.o
+/usr/bin/gcc -DHAVE_STRUCT_STAT_ST_MTIME_N  -w  -std=gnu11 -o CMakeFiles/cmTC_47ae8.dir/src.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c:7:34: error: 'struct stat' has no member named 'st_mtime_n'
+   (void)sizeof(((struct stat *)0)->st_mtime_n);
+                                  ^
+CMakeFiles/cmTC_47ae8.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_47ae8.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_47ae8.dir/src.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_47ae8/fast' failed
+make: *** [cmTC_47ae8/fast] Error 2
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_mtime_n);
+  return 0;
+}
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_UMTIME failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_f4172/fast && make  -f CMakeFiles/cmTC_f4172.dir/build.make CMakeFiles/cmTC_f4172.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f4172.dir/src.c.o
+/usr/bin/gcc -DHAVE_STRUCT_STAT_ST_UMTIME  -w  -std=gnu11 -o CMakeFiles/cmTC_f4172.dir/src.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c:7:34: error: 'struct stat' has no member named 'st_umtime'
+   (void)sizeof(((struct stat *)0)->st_umtime);
+                                  ^
+CMakeFiles/cmTC_f4172.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_f4172.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_f4172.dir/src.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_f4172/fast' failed
+make: *** [cmTC_f4172/fast] Error 2
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_umtime);
+  return 0;
+}
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_MTIME_USEC failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e7c7a/fast && make  -f CMakeFiles/cmTC_e7c7a.dir/build.make CMakeFiles/cmTC_e7c7a.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e7c7a.dir/src.c.o
+/usr/bin/gcc -DHAVE_STRUCT_STAT_ST_MTIME_USEC  -w  -std=gnu11 -o CMakeFiles/cmTC_e7c7a.dir/src.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c:7:34: error: 'struct stat' has no member named 'st_mtime_usec'
+   (void)sizeof(((struct stat *)0)->st_mtime_usec);
+                                  ^
+CMakeFiles/cmTC_e7c7a.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_e7c7a.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_e7c7a.dir/src.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_e7c7a/fast' failed
+make: *** [cmTC_e7c7a/fast] Error 2
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_mtime_usec);
+  return 0;
+}
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_FLAGS failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_7b825/fast && make  -f CMakeFiles/cmTC_7b825.dir/build.make CMakeFiles/cmTC_7b825.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7b825.dir/src.c.o
+/usr/bin/gcc -DHAVE_STRUCT_STAT_ST_FLAGS  -w  -std=gnu11 -o CMakeFiles/cmTC_7b825.dir/src.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c:7:34: error: 'struct stat' has no member named 'st_flags'
+   (void)sizeof(((struct stat *)0)->st_flags);
+                                  ^
+CMakeFiles/cmTC_7b825.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_7b825.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_7b825.dir/src.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_7b825/fast' failed
+make: *** [cmTC_7b825/fast] Error 2
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_flags);
+  return 0;
+}
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STATVFS_F_IOSIZE failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_0da5f/fast && make  -f CMakeFiles/cmTC_0da5f.dir/build.make CMakeFiles/cmTC_0da5f.dir/build
+make[1]: Entering directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0da5f.dir/src.c.o
+/usr/bin/gcc -DHAVE_STRUCT_STATVFS_F_IOSIZE  -w  -std=gnu11 -o CMakeFiles/cmTC_0da5f.dir/src.c.o -c /root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c: In function 'main':
+/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp/src.c:7:37: error: 'struct statvfs' has no member named 'f_iosize'
+   (void)sizeof(((struct statvfs *)0)->f_iosize);
+                                     ^
+CMakeFiles/cmTC_0da5f.dir/build.make:84: recipe for target 'CMakeFiles/cmTC_0da5f.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_0da5f.dir/src.c.o] Error 1
+make[1]: Leaving directory '/root/workfiles/cmake/cmake-3.19.5/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_0da5f/fast' failed
+make: *** [cmTC_0da5f/fast] Error 2
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/statvfs.h>
+
+int main()
+{
+  (void)sizeof(((struct statvfs *)0)->f_iosize);
+  return 0;
+}
+
+Checking for curses support failed with the following output:
+Change Dir: /root/workfiles/cmake/cmake-3.19.5/Source/Checks/Curses-build
+
+Run Build Command(s):/usr/bin/make CheckCurses && make: *** No rule to make target 'CheckCurses'.  Stop.
+
+
+
+Looking for a Fortran compiler failed with the following output:
+CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 2.8.12 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+-- The Fortran compiler identification is unknown
+CMake Error at CMakeLists.txt:2 (project):
+  No CMAKE_Fortran_COMPILER could be found.
+
+  Tell CMake where to find the compiler by setting either the environment
+  variable "FC" or the CMake cache entry CMAKE_Fortran_COMPILER to the full
+  path to the compiler, or to the compiler name if it is in the PATH.
+
+
+-- Configuring incomplete, errors occurred!
+See also "/root/workfiles/cmake/cmake-3.19.5/Tests/CMakeFiles/CheckFortran/CMakeFiles/CMakeOutput.log".
+See also "/root/workfiles/cmake/cmake-3.19.5/Tests/CMakeFiles/CheckFortran/CMakeFiles/CMakeError.log".
+
